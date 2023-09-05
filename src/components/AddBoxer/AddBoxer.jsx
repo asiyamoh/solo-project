@@ -1,8 +1,11 @@
 import { useState } from 'react'
+import  {useDispatch} from 'react-redux'
 function AddBoxer() {
 
+    const dispatch  = useDispatch();
+
     //to hold the input of the Member Number
-    const [MemberNumber, setNewMemberNumber] = useState('');
+    const [memberNumber, setNewMemberNumber] = useState('');
 
     //to hold the input of the First Name
     const [firstName, setFirstName] = useState('');
@@ -19,16 +22,38 @@ function AddBoxer() {
     //to hold the input of the weight
     const [weight, setWeight] = useState('');
 
+    //to hold the input of the region
+    //might make this into a drop down😀
+    const [region, setRegion] = useState('')
+
     // this handles all the Inputs from the form
     const handleInputs = (event) => {
         event.preventDefault();
-        console.log('in here!');
-        console.log('Number:', MemberNumber);
-        console.log('firstName:', firstName);
-        console.log('LastName:', lastName);
-        console.log('birthdate:', birthdate);
-        console.log('Gender:', gender);
-        console.log('weight', weight);
+
+        //make sure every input has a value
+        if(memberNumber && firstName && lastName && birthdate && gender && weight && region){
+            console.log('Got Everything!')
+
+            //make all the input values into an object
+            let addBoxer = {
+                memberNumber,
+                firstName,
+                lastName,
+                birthdate,
+                gender,
+                weight,
+                region
+            }
+            dispatch({
+                type:'ADD_BOXER',
+                payload:addBoxer
+            })
+            
+        }
+        //if not, alert the user to make sure the input has value
+        else{
+            alert('MAKE SURE THE INPUT HAS VALUE')
+        }
     }
 
     return (
@@ -42,7 +67,7 @@ function AddBoxer() {
                     onChange={(event) => {
                         setNewMemberNumber(event.target.value)
                     }}
-                    value={MemberNumber}>
+                    value={memberNumber}>
                 </input>
 
                 {/* Input of the First Name */}
@@ -67,6 +92,10 @@ function AddBoxer() {
 
                 {/* Input of the Birthdate */}
                 <input
+                    //fix this, so the birthdate placeholder shows up
+                    //instead of the mm/dd/yyyy
+                    //will have to use CSS
+                    placeholder='BIRTHDATE'
                     type='date'
                     onChange={(event) => {
                         setBirthdate(event.target.value)
@@ -94,6 +123,15 @@ function AddBoxer() {
                     value={weight}>
                 </input>
 
+                {/* Input of the Add Boxer */}
+                <input
+                    type='text'
+                    placeholder='REGION'
+                    onChange={(event) => {
+                        setRegion(event.target.value)
+                    }}
+                    value={region}>
+                </input>
 
                 <button type='submit'>Submit</button>
             </form>
