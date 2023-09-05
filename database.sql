@@ -11,8 +11,6 @@ CREATE TABLE user (
 
 CREATE TABLE Fights (
     id SERIAL PRIMARY KEY,
-    fighter_name VARCHAR(100) NOT NULL,
-    opponents_name VARCHAR(100) NOT NULL,
     location VARCHAR(260) NOT NULL,
     winner BOOLEAN NOT NULL,
     member_id_1 INT REFERENCES "member" NOT NULL,
