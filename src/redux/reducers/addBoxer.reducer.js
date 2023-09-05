@@ -1,6 +1,6 @@
 const addBoxer  =  (state = {}, action)  => {
     switch(action.type){
-        case 'ADD_BOXER':
+        case 'ADD':
             return action.payload;
         default:
             return state;
