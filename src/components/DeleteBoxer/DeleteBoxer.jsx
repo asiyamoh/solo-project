@@ -1,9 +1,12 @@
-import {useEffect} from "react"
-import { useDispatch } from "react-redux"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 
-function DeleteBoxer(){
+function DeleteBoxer() {
 
     const dispatch = useDispatch();
+    const store = useSelector(store => store.getReducer)
+
+    console.log('the store:', store)
 
     //As Page loads, it will call the function getBoxers 
     useEffect(() => {
@@ -13,15 +16,29 @@ function DeleteBoxer(){
     const getBoxers = () => {
         console.log('In here!')
         dispatch({
-            type:'GET_BOXER'
+            type: 'GET_BOXER'
         })
-        
+
     }
 
 
-    return(
+    return (
         <>
-        <h1>DELETE BOXER</h1>
+            <h1>DELETE BOXER</h1>
+            <div>
+                {/* map over the store and put it on DOM */}
+                {store.map(boxer => {
+                    return (
+                        <>
+                            <h3 key={boxer.id}>
+                                {boxer.firstname},
+                                { boxer.lastname},
+                                { boxer.weight_class}
+                            </h3>
+                        </>
+                    )
+                })}
+            </div>
         </>
     )
 }
