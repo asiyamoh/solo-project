@@ -2,7 +2,7 @@ import axios from 'axios'
 import { put, takeLatest } from 'redux-saga/effects';
 
 function* addBoxer(action) {
-    console.log('In HERE!')
+    console.log('In HERE!', action)
     try {
        const response = yield axios.post('/api/addBoxer', action.payload)
        console.log(response)

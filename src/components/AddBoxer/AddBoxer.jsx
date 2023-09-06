@@ -36,12 +36,12 @@ function AddBoxer() {
 
             //make all the input values into an object
             let addBoxer = {
-                memberNumber,
-                firstName,
-                lastName,
-                birthdate,
+                member_number:memberNumber,
+                firstname: firstName,
+                lastname: lastName,
+                birthdate: birthdate,
                 gender,
-                weight,
+                weight_class: weight,
                 region
             }
             dispatch({

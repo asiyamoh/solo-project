@@ -4,7 +4,8 @@ const router = express.Router();
 
 
 router.post('/', (req, res) => {
-    console.log(req.body)
+    console.log(req.body.firstname)
+    // console.log('hey:', req.user.id);
 
 
     //queryText to INSERT the new boxer
@@ -16,9 +17,8 @@ router.post('/', (req, res) => {
 
     //queryParams for the input values of the new boxer
     const queryParams = [req.body.member_number, req.body.firstname,
-    req.body.lastname, req.body.birthdate, req.body.gender, 
-    req.body.weight_class,
-    req.body.region, req.body.coach_id]
+    req.body.lastname, req.body.birthdate, req.body.gender, req.body.weight_class,
+    req.body.region, 1]
     //I am hard codeing the coach_id
     //Need to fix that later 😞
 
