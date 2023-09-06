@@ -17,13 +17,22 @@ function UserPage() {
     history.push("/addBoxer");
   }
 
+  //this function is called 
+  //when the search button is clicked
+  const handleSearch = () => {
+    console.log('CLICKED')
+    //will change route to the search fighter page
+    history.push("/searchFighters");
+  }
+
 
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
       <div>
-        <button onClick={handleAdd}>AddBoxer</button>
+        <button onClick={handleAdd}>Add Boxer</button>
+        <button onClick={handleSearch}>Search Boxer</button>
       </div>
 
 

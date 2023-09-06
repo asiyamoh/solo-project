@@ -4,11 +4,13 @@ import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
+import {useHistory} from "react-router-dom"
 
 function DeleteBoxer() {
 
     const dispatch = useDispatch();
     const store = useSelector(store => store.getReducer)
+    const history = useHistory();
 
     console.log('the store:', store)
 
@@ -28,8 +30,8 @@ function DeleteBoxer() {
     }
 
     //this function will be called 
-    //after the trash has been click
-    const handleClick = (id) => {
+    //after the trash Icon has been click
+    const handleClickTrash = (id) => {
         console.log('I have been clicked!')
         console.log('ID:', id)
         //this will talk to the  DB and 
@@ -38,6 +40,14 @@ function DeleteBoxer() {
             type: 'DELETE_BOXER',
             payload:id
         })
+    }
+
+    //this function will be called
+    //after the home button was clicked
+    const handleClickHome = () => {
+        console.log('CLICKED')
+        //change route to the home page
+        history.push('/')
     }
 
 
@@ -49,7 +59,7 @@ function DeleteBoxer() {
                 {store.map(boxer => {
                     return (
                         <>
-                            <Stack direction="column-reverse" spacing={1} onClick={() => handleClick(boxer.id)}>
+                            <Stack direction="column-reverse" spacing={1} onClick={() => handleClickTrash(boxer.id)}>
                                 <h3 key={boxer.id}>
                                     {boxer.firstname},
                                     {boxer.lastname},
@@ -64,6 +74,9 @@ function DeleteBoxer() {
                     )
                 })}
             </div>
+
+            <button onClick={handleClickHome}>HOME</button>
+            {/* will need the back button here  🥲*/}
         </>
     )
 }

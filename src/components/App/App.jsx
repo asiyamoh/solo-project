@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddBoxer from '../AddBoxer/AddBoxer';
 import DeleteBoxer from '../DeleteBoxer/DeleteBoxer';
+import SearchFighters  from '../SearchFighters/SearchFighters'
 
 import './App.css';
 
@@ -120,6 +121,10 @@ function App() {
           {/* Route for deleting boxers */}
           <Route path="/deleteBoxer" exact>
             <DeleteBoxer />
+          </Route>
+
+          <Route path="/searchFighters" exact>
+            <SearchFighters/>
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
