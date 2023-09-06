@@ -8,14 +8,14 @@ router.post('/', (req, res) => {
     // console.log('hey:', req.user.id);
 
 
-    //queryText to INSERT the new boxer
+    //queryText to INSERT the new Member
     const queryText = `INSERT INTO Member(member_number, 
         firstname, lastname, birthdate, gender, 
         weight_class, region, coach_id)
     VALUES
     ($1, $2, $3, $4, $5, $6, $7, $8);`
 
-    //queryParams for the input values of the new boxer
+    //queryParams for the input values of the new Member
     const queryParams = [req.body.member_number, req.body.firstname,
     req.body.lastname, req.body.birthdate, req.body.gender, req.body.weight_class,
     req.body.region, 1]
