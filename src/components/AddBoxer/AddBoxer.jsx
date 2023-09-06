@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import  {useDispatch} from 'react-redux'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 function AddBoxer() {
 
     const dispatch  = useDispatch();
+    const history = useHistory();
 
     //to hold the input of the Member Number
     const [memberNumber, setNewMemberNumber] = useState('');
@@ -48,6 +50,10 @@ function AddBoxer() {
                 type:'ADD_BOXER',
                 payload:addBoxer
             })
+
+            //change the route to deleteBoxers 
+            //after user clicks on submit
+            history.push('/deleteBoxer');
             
         }
         //if not, alert the user to make sure the input has value

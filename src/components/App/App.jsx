@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddBoxer from '../AddBoxer/AddBoxer';
+import DeleteBoxer from '../DeleteBoxer/DeleteBoxer';
 
 import './App.css';
 
@@ -110,9 +111,15 @@ function App() {
               <LandingPage />
             }
           </Route>
-
+          
+          {/* Route for adding boxers */}
           <Route path="/addBoxer" exact>
             <AddBoxer />
+          </Route>
+
+          {/* Route for deleting boxers */}
+          <Route path="/deleteBoxer" exact>
+            <DeleteBoxer />
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
