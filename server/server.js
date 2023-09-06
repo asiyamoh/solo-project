@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const addBoxerRouter = require('./routes/addBoxer.router')
 const getBoxerRouter = require('./routes/getBoxer.router')
 const deleteBoxerRouter =  require('./routes/deleteBoxer.router')
+const searchFightersRouter = require('./routes/searchFighters.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -26,9 +27,10 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/addBoxer', addBoxerRouter )
-app.use('/api/getBoxer', getBoxerRouter)
-app.use('/api/deleteBoxer', deleteBoxerRouter)
+app.use('/api/addBoxer', addBoxerRouter );
+app.use('/api/getBoxer', getBoxerRouter);
+app.use('/api/deleteBoxer', deleteBoxerRouter);
+app.use('/api/searchFighters', searchFightersRouter);
 
 // Serve static files
 app.use(express.static('build'));
