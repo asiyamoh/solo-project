@@ -36,6 +36,11 @@ function SearchFighters() {
         console.log('region:', region)
         console.log('Fights:', numOfFights)
         console.log('Age:', age)
+        if(age >= 18){
+            console.log('heyyy')
+            setAge('01/01/2004')
+        }
+        
     }
 
     return (
