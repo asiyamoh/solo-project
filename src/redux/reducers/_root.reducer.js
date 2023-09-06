@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
-import addBoxer from './addBoxer.reducer'
+// import addBoxer from './addBoxer.reducer'
 import getReducer from './getBoxer.reducer';
 
 // rootReducer is the primary reducer for our entire project
@@ -13,7 +13,7 @@ import getReducer from './getBoxer.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  addBoxer,
+  // addBoxer,
   getReducer,
   
 });

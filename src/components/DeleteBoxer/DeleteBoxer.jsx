@@ -18,7 +18,7 @@ function DeleteBoxer() {
     }, [])
 
     //this function will talk to the DB and 
-    //get all boxer with the coaches ID
+    //get all Member with the coaches ID
     const getBoxers = () => {
         console.log('In here!')
         dispatch({
@@ -29,8 +29,15 @@ function DeleteBoxer() {
 
     //this function will be called 
     //after the trash has been click
-    const handleClick = () => {
+    const handleClick = (id) => {
         console.log('I have been clicked!')
+        console.log('ID:', id)
+        //this will talk to the  DB and 
+        //delete the member with that ID
+        dispatch({
+            type: 'DELETE_BOXER',
+            payload:id
+        })
     }
 
 
@@ -42,7 +49,7 @@ function DeleteBoxer() {
                 {store.map(boxer => {
                     return (
                         <>
-                            <Stack direction="column-reverse" spacing={1} onClick={handleClick}>
+                            <Stack direction="column-reverse" spacing={1} onClick={() => handleClick(boxer.id)}>
                                 <h3 key={boxer.id}>
                                     {boxer.firstname},
                                     {boxer.lastname},
