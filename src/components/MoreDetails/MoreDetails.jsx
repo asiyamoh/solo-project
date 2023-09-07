@@ -1,8 +1,9 @@
-function MoreDetails(){
+function MoreDetails() {
 
-    return(
+    return (
         <>
-        
+            <h1>More Details</h1>
+
         </>
     )
 }

@@ -21,7 +21,9 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddBoxer from '../AddBoxer/AddBoxer';
 import DeleteBoxer from '../DeleteBoxer/DeleteBoxer';
-import SearchFighters  from '../SearchFighters/SearchFighters'
+import SearchFighters from '../SearchFighters/SearchFighters'
+import ResultOfTheSearch from '../ResultOfTheSearch/ResultOfTheSearch';
+import MoreDetails from '../MoreDetails/MoreDetails';
 
 import './App.css';
 
@@ -112,7 +114,7 @@ function App() {
               <LandingPage />
             }
           </Route>
-          
+
           {/* Route for adding boxers */}
           <Route path="/addBoxer" exact>
             <AddBoxer />
@@ -123,8 +125,19 @@ function App() {
             <DeleteBoxer />
           </Route>
 
+          {/* Route for searching boxers */}
           <Route path="/searchFighters" exact>
-            <SearchFighters/>
+            <SearchFighters />
+          </Route>
+
+          {/* Route for the result of the search*/}
+          <Route path='/result' exact>
+            <ResultOfTheSearch />
+          </Route>
+          
+          {/* Route for the more details search*/}
+          <Route path='/moreDetails/:id' exact>
+            <MoreDetails/>
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}

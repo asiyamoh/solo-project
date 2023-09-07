@@ -4,13 +4,24 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { useState } from 'react'
+import { useDispatch } from 'react-redux';
 
 
 function inputGender() {
 
-    //to hold the input vlaue of gender
-    const [gender, setGender] = useState('')
+    const dispatch = useDispatch();
+
+    const handleChange = (event) => {
+        const gender = event.target.value
+        console.log('heyy')
+        console.log('gender', gender)
+        dispatch({
+            type:'GENDER',
+            payload:gender
+        })
+    }
+
+   
 
     return (
 
@@ -21,13 +32,10 @@ function inputGender() {
                 <RadioGroup
                     aria-labelledby="demo-controlled-radio-buttons-group"
                     name="controlled-radio-buttons-group"
-                    onChange={(event) => {
-                        setGender(event.target.value)
-                    }}
-                    value={gender}
+                    onChange={handleChange}
                 >
-                    <FormControlLabel value="female" control={<Radio />} label="Female" />
-                    <FormControlLabel value="male" control={<Radio />} label="Male" />
+                    <FormControlLabel value="F" control={<Radio />} label="Female" />
+                    <FormControlLabel value="M" control={<Radio />} label="Male" />
                 </RadioGroup>
             </FormControl>
         </Box >

@@ -9,8 +9,13 @@ import { useState } from 'react'
 
 function InputNumberOfFights() {
 
-    //to hold the input value of number of Fights
-    const [numOfFights, setNumOfFights] = useState('');
+    
+
+    const handleChange = (event) => {
+        const numOfFights = event.target.value
+        console.log('hey')
+        console.log('numofFights:', numOfFights)
+    }
 
     return (
         <Box>
@@ -21,10 +26,7 @@ function InputNumberOfFights() {
                 <RadioGroup
                     aria-labelledby="demo-controlled-radio-buttons-group"
                     name="controlled-radio-buttons-group"
-                    onChange={(event) => {
-                        setNumOfFights(event.target.value)
-                    }}
-                    value={numOfFights}
+                    onChange={handleChange}
                 >
                     <FormControlLabel value="0" control={<Radio />} label="0 fights" />
                     <FormControlLabel value="4" control={<Radio />} label="under 5 fights" />

@@ -13,6 +13,7 @@ const addBoxerRouter = require('./routes/addBoxer.router')
 const getBoxerRouter = require('./routes/getBoxer.router')
 const deleteBoxerRouter =  require('./routes/deleteBoxer.router')
 const searchFightersRouter = require('./routes/searchFighters.router')
+const searchGender = require('./routes/searchGender')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -31,6 +32,7 @@ app.use('/api/addBoxer', addBoxerRouter );
 app.use('/api/getBoxer', getBoxerRouter);
 app.use('/api/deleteBoxer', deleteBoxerRouter);
 app.use('/api/searchFighters', searchFightersRouter);
+app.use('/api/searchGender', searchGender)
 
 // Serve static files
 app.use(express.static('build'));
