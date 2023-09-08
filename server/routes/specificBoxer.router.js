@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.get('/:id', (req,res) => {
-    const id = (req.params.id)
+    const id = req.params.id
     console.log('id:', id)
 
     const queryText = `SELECT member.firstname, member.lastname, 
