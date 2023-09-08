@@ -1,11 +1,13 @@
 import {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 function MoreDetails() {
     let {id} = useParams()
     const dispatch = useDispatch();
+    const history = useHistory();
 
 
     const store = useSelector(store => store.getSpecific)
@@ -25,6 +27,11 @@ function MoreDetails() {
         getSpecific()
     }, [])
 
+    const handleClick = () => {
+        console.log('CLICKED')
+        history.push('/request')
+    }
+
 
 
     return (
@@ -38,6 +45,8 @@ function MoreDetails() {
                 {store[0].coach_name}
                 {store[0].fights_count}
             </h3>
+
+            <button onClick={handleClick}>NEXT</button>
 
         </>
     )

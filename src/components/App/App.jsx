@@ -24,6 +24,7 @@ import DeleteBoxer from '../DeleteBoxer/DeleteBoxer';
 import SearchFighters from '../SearchFighters/SearchFighters'
 import ResultOfTheSearch from '../ResultOfTheSearch/ResultOfTheSearch';
 import MoreDetails from '../MoreDetails/MoreDetails';
+import RequestTheMatch from '../RequestTheMatch/RequestTheMatch';
 
 import './App.css';
 
@@ -134,10 +135,15 @@ function App() {
           <Route path='/result' exact>
             <ResultOfTheSearch />
           </Route>
-          
+
           {/* Route for the more details search*/}
           <Route path='/moreDetails/:id' exact>
-            <MoreDetails/>
+            <MoreDetails />
+          </Route>
+
+          {/* Route for Requesting matches*/}
+          <Route path='/request' exact>
+            <RequestTheMatch />
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
