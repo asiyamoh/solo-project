@@ -4,7 +4,7 @@ import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 function DeleteBoxer() {
 
@@ -38,7 +38,7 @@ function DeleteBoxer() {
         //delete the member with that ID
         dispatch({
             type: 'DELETE_BOXER',
-            payload:id
+            payload: id
         })
     }
 
@@ -48,6 +48,14 @@ function DeleteBoxer() {
         console.log('CLICKED')
         //change route to the home page
         history.push('/')
+    }
+
+    //this function will be called  
+    //after the edit button was clicked
+    const handleEditClick = (id) => {
+        console.log('CLICKED id:', id)
+        history.push('/edit')
+
     }
 
 
@@ -64,10 +72,16 @@ function DeleteBoxer() {
                                     {boxer.firstname},
                                     {boxer.lastname},
                                     {boxer.weight_class}
+
                                     {/* The  trash Icon */}
-                                    <IconButton aria-label="delete" color="secondary">
-                                        <DeleteIcon/>
+                                    <IconButton aria-label="delete" color="secondary"
+                                        onClick={() => handleClickTrash(boxer.id)}
+                                    >
+                                        <DeleteIcon />
                                     </IconButton>
+
+                                    {/* The edit button*/}
+                                    <button onClick={() => handleEditClick(boxer.id)}>Edit</button>
                                 </h3>
                             </Stack>
                         </>

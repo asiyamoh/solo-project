@@ -25,6 +25,7 @@ import SearchFighters from '../SearchFighters/SearchFighters'
 import ResultOfTheSearch from '../ResultOfTheSearch/ResultOfTheSearch';
 import MoreDetails from '../MoreDetails/MoreDetails';
 import RequestTheMatch from '../RequestTheMatch/RequestTheMatch';
+import EditBoxer from '../DeleteBoxer/EditBoxer'
 
 import './App.css';
 
@@ -144,6 +145,11 @@ function App() {
           {/* Route for Requesting matches*/}
           <Route path='/request' exact>
             <RequestTheMatch />
+          </Route>
+
+          {/* Route for the Edit boxers/members Form */}
+          <Route path="/edit" exact>
+            <EditBoxer />
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}

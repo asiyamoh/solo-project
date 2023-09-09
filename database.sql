@@ -24,8 +24,8 @@ CREATE TABLE Fights (
 CREATE TABLE Member (
     id SERIAL PRIMARY KEY,
     member_number INTEGER NOT NULL,
-    first_name INTEGER NOT NULL,
-    last_name INTEGER NOT NULL,
+    firstname INTEGER NOT NULL,
+    lastname INTEGER NOT NULL,
     birthdate DATE NOT NULL,
     gender VARCHAR(1) NOT NULL,
     weight_class INTEGER NOT NULL,
