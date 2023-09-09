@@ -25,6 +25,9 @@ function UserPage() {
     history.push("/searchFighters");
   }
 
+  const handleYourBoxer = () => {
+    history.push('/deleteBoxer')
+  }
 
   return (
     <div className="container">
@@ -33,6 +36,7 @@ function UserPage() {
       <div>
         <button onClick={handleAdd}>Add Boxer</button>
         <button onClick={handleSearch}>Search Boxer</button>
+        <button onClick={handleYourBoxer}>Your Boxers</button>
       </div>
 
 

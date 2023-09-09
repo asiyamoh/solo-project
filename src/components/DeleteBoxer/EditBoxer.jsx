@@ -13,47 +13,14 @@ function EditBoxer(){
         })
     }
 
-    // const handleFirstNameChange = (event) =>  {
-    //     dispatch({
-    //         type: 'EDIT',
-    //         payload: {property: 'firstname', value: event.target.value}
-    //     })
-    // }
+    const handleSubmit = () => {
+        console.log('SUBMIT')
+        dispatch({
+            type:'EDIT_SUBMIT',
+            payload: editBoxer
+        })
 
-    // const handleLastNameChange = (event) =>  {
-    //     dispatch({
-    //         type: 'EDIT',
-    //         payload: {property: 'lastname', value: event.target.value}
-    //     })
-    // }
-
-    // const handleBirthdateChange = (event) =>  {
-    //     dispatch({
-    //         type: 'EDIT',
-    //         payload: {property: 'birthdate', value: event.target.value}
-    //     })
-    // }
-
-    // const handleRegionChange = (event) =>  {
-    //     dispatch({
-    //         type: 'EDIT',
-    //         payload: {property: 'region', value: event.target.value}
-    //     })
-    // }
-
-    // const handleGenderChange = (event) =>  {
-    //     dispatch({
-    //         type: 'EDIT',
-    //         payload: {property: 'gender', value: event.target.value}
-    //     })
-    // }
-
-    // const handleWeightClassChange = (event) =>  {
-    //     dispatch({
-    //         type: 'EDIT',
-    //         payload: {property: 'weight_class', value: event.target.value}
-    //     })
-    // }
+    }
 
 
     return(
@@ -114,6 +81,8 @@ function EditBoxer(){
             onChange={(event) => handleChanges("weight_class", event.target.value)}
             value={editBoxer.weight_class}>
         </input>
+
+        <button onClick={handleSubmit}>Submit</button>
 
 
         </>

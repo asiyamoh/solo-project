@@ -8,6 +8,9 @@ const editBoxer = (state = {}, action) => {
             [action.payload.property] : [action.payload.value]
         }
     }
+    if(action.type  === 'EDIT_CLEAR'){
+        return ''
+    }
     return state;
 }
 
