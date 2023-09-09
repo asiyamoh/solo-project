@@ -9,12 +9,13 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
-const addBoxerRouter = require('./routes/addBoxer.router')
-const getBoxerRouter = require('./routes/getBoxer.router')
-const deleteBoxerRouter =  require('./routes/deleteBoxer.router')
-const searchFightersRouter = require('./routes/searchFighters.router')
-const searchGender = require('./routes/searchGender')
-const specificBoxer =  require('./routes/specificBoxer.router')
+const addBoxerRouter = require('./routes/addBoxer.router');
+const getBoxerRouter = require('./routes/getBoxer.router');
+const deleteBoxerRouter =  require('./routes/deleteBoxer.router');
+const searchFightersRouter = require('./routes/searchFighters.router');
+const searchGender = require('./routes/searchGender');
+const specificBoxer =  require('./routes/specificBoxer.router');
+const editBoxer = require('./routes/editBoxer.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -33,8 +34,9 @@ app.use('/api/addBoxer', addBoxerRouter );
 app.use('/api/getBoxer', getBoxerRouter);
 app.use('/api/deleteBoxer', deleteBoxerRouter);
 app.use('/api/searchFighters', searchFightersRouter);
-app.use('/api/searchGender', searchGender)
-app.use('/api/specific', specificBoxer)
+app.use('/api/searchGender', searchGender);
+app.use('/api/specific', specificBoxer);
+app.use('/api/editBoxer', editBoxer);
 
 // Serve static files
 app.use(express.static('build'));
