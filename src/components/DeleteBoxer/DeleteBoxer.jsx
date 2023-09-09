@@ -52,8 +52,9 @@ function DeleteBoxer() {
 
     //this function will be called  
     //after the edit button was clicked
-    const handleEditClick = (id) => {
-        console.log('CLICKED id:', id)
+    const handleEditClick = (boxer) => {
+        console.log('CLICKED:', boxer)
+        dispatch({type:'SET_EDIT_BOXER', payload:boxer})
         history.push('/edit')
 
     }
@@ -81,7 +82,7 @@ function DeleteBoxer() {
                                     </IconButton>
 
                                     {/* The edit button*/}
-                                    <button onClick={() => handleEditClick(boxer.id)}>Edit</button>
+                                    <button onClick={() => handleEditClick(boxer)}>Edit</button>
                                 </h3>
                             </Stack>
                         </>

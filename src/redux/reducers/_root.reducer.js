@@ -5,6 +5,7 @@ import user from './user.reducer';
 import getReducer from './getBoxer.reducer';
 import search from './searchGender.reducer'
 import getSpecific from './getSpecificBoxer';
+import editBoxer from './editBoxer.reducers';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   getReducer,
   search,
   getSpecific,
+  editBoxer,
   
 });
 
