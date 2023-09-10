@@ -5,16 +5,17 @@ const router = express.Router();
 
 router.put('/:id', (req,res) => {
     console.log('id:', req.params.id)
-    console.log('req body:', req.body)
+   
 
     const id = req.params.id;
-    const memberNumber = req.body.memberNumber;
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
+    const memberNumber = req.body.member_number;
+    const firstName = req.body.firstname;
+    const lastName = req.body.lastname;
     const birthdate = req.body.birthdate;
     const gender = req.body.gender;
-    const weightClass = req.body.weightClass;
+    const weightClass = req.body.weight_class;
     const region = req.body.region;
+    console.log('req body hey:', req.body)
 
 
     const queryText = `UPDATE "member"
@@ -32,9 +33,8 @@ router.put('/:id', (req,res) => {
     pool.query(queryText, queryParams)
         .then((result) => {
             res.sendStatus(200)
-            console.log('result', result.rows)
         }).catch((error) => {
-            console.log('Error with the PUT')
+            console.log('Error with the PUT', error)
             res.sendStatus(500)
         })
 })
