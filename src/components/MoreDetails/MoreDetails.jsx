@@ -18,8 +18,7 @@ function MoreDetails() {
         dispatch({
             type:'SPECIFIC',
             payload: id
-        })
-        
+        })  
     }
 
 

@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useSelector} from "react-redux"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
 
@@ -6,6 +6,7 @@ function ResultOfTheSearch() {
 
     const history = useHistory();
     const store = useSelector(store => store.search)
+    console.log('the store bro:', store)
 
     const handleClick = (id) => {
         console.log('I have been clicked!')
