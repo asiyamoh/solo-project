@@ -1,11 +1,15 @@
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector, useDispatch} from "react-redux"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function EditBoxer(){
     const dispatch =  useDispatch();
+    const history = useHistory();
     const editBoxer = useSelector((store) => store.editBoxer)
     console.log('the Store:', editBoxer)
 
 
+    // This function handles all the input change
+    // and temporarilly stores it in a store
     const handleChanges = (property, value) =>  {
         dispatch({
             type: 'EDIT',
@@ -13,13 +17,17 @@ function EditBoxer(){
         })
     }
 
+    //handle submit will call the sage
+    //the saga will take care of the axios request 
     const handleSubmit = () => {
         console.log('SUBMIT')
         dispatch({
             type:'EDIT_SUBMIT',
             payload: editBoxer
         })
-
+        //after they are done editing,
+        //go back to home
+        history.push('/')
     }
 
 
@@ -82,6 +90,7 @@ function EditBoxer(){
             value={editBoxer.weight_class}>
         </input>
 
+        {/* Submit button */}
         <button onClick={handleSubmit}>Submit</button>
 
 

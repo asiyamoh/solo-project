@@ -18,6 +18,8 @@ router.put('/:id', (req,res) => {
     console.log('req body hey:', req.body)
 
 
+    // queryText for updating member's info 
+    //with the given id
     const queryText = `UPDATE "member"
     SET "member_number" = $1, 
     "firstname" = $2,
@@ -28,6 +30,7 @@ router.put('/:id', (req,res) => {
     "region" = $7
     WHERE "id" = $8;`
 
+    //queryparams for the new info of that member
     const queryParams = [memberNumber, firstName,lastName,birthdate,gender,weightClass,region, id]
 
     pool.query(queryText, queryParams)
