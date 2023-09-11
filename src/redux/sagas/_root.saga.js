@@ -8,6 +8,7 @@ import deleteSaga from './deleteBoxer.saga';
 import searchGender from './gender.saga';
 import specificSaga from './specificBoxer';
 import editSaga from './editBoxer.saga'
+import datesSaga from './getDates.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -27,6 +28,7 @@ export default function* rootSaga() {
     searchGender(),
     specificSaga(),
     editSaga(),
+    datesSaga(),
     
     
   ]);

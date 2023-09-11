@@ -1,4 +1,7 @@
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { useEffect } from "react";
+
+
 import dayjs from 'dayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -8,8 +11,24 @@ import { DateRangeCalendar } from '@mui/x-date-pickers-pro/DateRangeCalendar';
 
 function RequestTheMatch() {
 
+    const dispatch = useDispatch();
+
     const store = useSelector(store => store.getSpecific)
+    const storeDate = useSelector(storedate => storedate.fightDates)
     console.log('the store:', store)
+    console.log('the dateStore:', storeDate)
+
+
+    useEffect(() => {
+        getDates()
+    }, [])
+
+    const getDates = () => {
+        dispatch({
+            type:'GET_DATES'
+        })
+    }
+
 
     return (
         <>
@@ -26,15 +45,9 @@ function RequestTheMatch() {
             <h2>PICK A DATE</h2>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={['DateRangeCalendar', 'DateRangeCalendar']}>
-                    <DemoItem label="disabled">
-                        <DateRangeCalendar
-                            defaultValue={[dayjs('2022-04-17'), dayjs('2022-04-21')]}
-                            disabled
-                        />
-                    </DemoItem>
                     <DemoItem label="readOnly">
                         <DateRangeCalendar
-                            defaultValue={[dayjs('2022-04-17'), dayjs('2022-04-21')]}
+                            defaultValue={[dayjs(storeDate)]}
                             readOnly
                         />
                     </DemoItem>

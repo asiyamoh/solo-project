@@ -39,8 +39,6 @@ function ResultOfTheSearch() {
                         </div>
                     </>
                 )}
-
-
             </div>
         </>
     )
