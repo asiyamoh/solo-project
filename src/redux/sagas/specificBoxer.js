@@ -2,7 +2,7 @@ import axios from 'axios'
 import { takeLatest, put } from 'redux-saga/effects';
 
 function* specific(action) {
-    console.log('action:', action.payload)
+    console.log('action id:', action.payload.id)
     try {
         const specificBoxer = yield axios.get(`/api/specific/${action.payload}`)
         console.log('one:', specificBoxer.data)
