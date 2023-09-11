@@ -1,17 +1,22 @@
 import { useSelector, useDispatch } from "react-redux"
-import { useEffect } from "react";
+import { useEffect, useState} from "react";
 
 
 import dayjs from 'dayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DateRangeCalendar } from '@mui/x-date-pickers-pro/DateRangeCalendar';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+
+
+
 
 
 function RequestTheMatch() {
 
     const dispatch = useDispatch();
+
+    const [date, setDate] = useState('')
 
     const store = useSelector(store => store.getSpecific)
     const storeDate = useSelector(storedate => storedate.fightDates)
@@ -25,7 +30,7 @@ function RequestTheMatch() {
 
     const getDates = () => {
         dispatch({
-            type:'GET_DATES'
+            type: 'GET_DATES'
         })
     }
 
@@ -43,16 +48,18 @@ function RequestTheMatch() {
             </h3>
 
             <h2>PICK A DATE</h2>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer components={['DateRangeCalendar', 'DateRangeCalendar']}>
-                    <DemoItem label="readOnly">
-                        <DateRangeCalendar
-                            defaultValue={[dayjs(storeDate)]}
-                            readOnly
-                        />
+            {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DemoContainer components={['DateCalendar', 'DateCalendar']}>
+                    <DemoItem label="Uncontrolled calendar">
+                        <DateCalendar defaultValue={dayjs('2022-04-17')} />
+                    </DemoItem>
+                    <DemoItem label="Controlled calendar">
+                        <DateCalendar value={dayjs(storeDate)}/>
                     </DemoItem>
                 </DemoContainer>
-            </LocalizationProvider>
+            </LocalizationProvider> */}
+
+
 
             <button>SUBMIT</button>
 
