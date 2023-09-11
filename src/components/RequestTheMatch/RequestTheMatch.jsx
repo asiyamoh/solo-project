@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux"
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import FightDates from './FightDates'
 
 
 import dayjs from 'dayjs';
@@ -16,12 +17,13 @@ function RequestTheMatch() {
 
     const dispatch = useDispatch();
 
-    const [date, setDate] = useState('')
+    const [date, setDate] = useState('');
+    // const [value, setValue] = useState| null>(dayjs('2022-04-17'));
 
     const store = useSelector(store => store.getSpecific)
     const storeDate = useSelector(storedate => storedate.fightDates)
     console.log('the store:', store)
-    console.log('the dateStore:', storeDate)
+    console.log('the dateStore:', storeDate[0].fight_dates)
 
 
     useEffect(() => {
@@ -32,6 +34,10 @@ function RequestTheMatch() {
         dispatch({
             type: 'GET_DATES'
         })
+    }
+
+    const handleDateChange = (event) => {
+        setDate(event);
     }
 
 
@@ -50,14 +56,18 @@ function RequestTheMatch() {
             <h2>PICK A DATE</h2>
             {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={['DateCalendar', 'DateCalendar']}>
-                    <DemoItem label="Uncontrolled calendar">
-                        <DateCalendar defaultValue={dayjs('2022-04-17')} />
+                    <DemoItem label="PICK A DATE">
+                        <DateCalendar value={date} onChange={handleDateChange} />
                     </DemoItem>
-                    <DemoItem label="Controlled calendar">
-                        <DateCalendar value={dayjs(storeDate)}/>
+                    <DemoItem label="USA BOXING EVENTS">
+                        <DateCalendar
+                            value={storeDate}
+                           disabledDates={(date) => !storeDate.includes(date.format('YYYY-MM-DD'))}
+                        />
                     </DemoItem>
                 </DemoContainer>
             </LocalizationProvider> */}
+            <FightDates/>
 
 
 
