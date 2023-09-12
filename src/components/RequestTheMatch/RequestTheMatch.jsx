@@ -11,9 +11,7 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 
 
-
-
-function RequestTheMatch() {
+function RequestTheMatch(dates) {
 
     const dispatch = useDispatch();
 
@@ -22,8 +20,8 @@ function RequestTheMatch() {
 
     const store = useSelector(store => store.getSpecific)
     const storeDate = useSelector(storedate => storedate.fightDates)
-    console.log('the store:', store)
-    console.log('the dateStore:', storeDate[0].fight_dates)
+    // console.log('the store:', store)
+    // console.log('the dateStore:', storeDate[0].fight_dates)
 
 
     useEffect(() => {
@@ -54,20 +52,17 @@ function RequestTheMatch() {
             </h3>
 
             <h2>PICK A DATE</h2>
-            {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={['DateCalendar', 'DateCalendar']}>
-                    <DemoItem label="PICK A DATE">
-                        <DateCalendar value={date} onChange={handleDateChange} />
+                    <DemoItem label="Uncontrolled calendar">
+                        <DateCalendar defaultValue={dayjs('2022-04-17')} />
                     </DemoItem>
-                    <DemoItem label="USA BOXING EVENTS">
-                        <DateCalendar
-                            value={storeDate}
-                           disabledDates={(date) => !storeDate.includes(date.format('YYYY-MM-DD'))}
-                        />
+                    <DemoItem label="Controlled calendar">
+                        <DateCalendar value={dates} onChange={(newValue) => setDate(newValue)} />
                     </DemoItem>
                 </DemoContainer>
-            </LocalizationProvider> */}
-            <FightDates/>
+            </LocalizationProvider>
+            {/* <FightDates/> */}
 
 
 

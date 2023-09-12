@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import RequestTheMatch from "./RequestTheMatch"
 
 function fightDates() {
 
@@ -19,6 +20,7 @@ function fightDates() {
                             return (
                                 <>
                                     {date.fight_dates}
+                                    <RequestTheMatch dates={date.fightDates}/>
                                 </>
                             )
                         })}
