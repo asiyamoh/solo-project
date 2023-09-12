@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect, useState } from "react";
 import FightDates from './FightDates'
+import PickYourBoxer from "./PickYourBoxer";
 
 
 import dayjs from 'dayjs';
@@ -52,7 +53,7 @@ function RequestTheMatch(dates) {
             </h3>
 
             <h2>PICK A DATE</h2>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
+            {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={['DateCalendar', 'DateCalendar']}>
                     <DemoItem label="Uncontrolled calendar">
                         <DateCalendar defaultValue={dayjs('2022-04-17')} />
@@ -61,8 +62,9 @@ function RequestTheMatch(dates) {
                         <DateCalendar value={dates} onChange={(newValue) => setDate(newValue)} />
                     </DemoItem>
                 </DemoContainer>
-            </LocalizationProvider>
+            </LocalizationProvider> */}
             {/* <FightDates/> */}
+            <PickYourBoxer/>
 
 
 

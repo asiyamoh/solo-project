@@ -12,7 +12,7 @@ function DeleteBoxer() {
     const store = useSelector(store => store.getReducer)
     const history = useHistory();
 
-    console.log('the store:', store)
+    console.log('the store bro:', store)
 
     //As Page loads, it will call the function getBoxers 
     useEffect(() => {
