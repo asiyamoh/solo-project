@@ -14,7 +14,7 @@ function RequestTheMatch() {
 
     const handlePickDateButton = () => {
         console.log('In HERE')
-        
+
     }
 
 
@@ -31,12 +31,13 @@ function RequestTheMatch() {
                 {specificBoxer[0].fights_count}
             </h3>
 
-            <h2>PICK A DATE</h2>
-           
+            <div>
+                <FightDates />
+            </div>
 
-            <button onClick={handlePickDateButton}>PICK A DATE</button>
-            {/* <FightDates/> */}
-            <PickYourBoxer />
+            <div>
+                <PickYourBoxer />
+            </div>
 
 
 
