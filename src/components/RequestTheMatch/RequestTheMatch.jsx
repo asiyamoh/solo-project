@@ -4,40 +4,19 @@ import FightDates from './FightDates'
 import PickYourBoxer from "./PickYourBoxer";
 
 
-import dayjs from 'dayjs';
-import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
+function RequestTheMatch() {
 
+    const specificBoxer = useSelector(store => store.getSpecific)
+    const fightDates = useSelector(storedate => storedate.fightDates)
+    console.log('the specificBoxer:', specificBoxer)
+    console.log('the dateStore:', fightDates)
 
-function RequestTheMatch(dates) {
-
-    const dispatch = useDispatch();
-
-    const [date, setDate] = useState('');
-    // const [value, setValue] = useState| null>(dayjs('2022-04-17'));
-
-    const store = useSelector(store => store.getSpecific)
-    const storeDate = useSelector(storedate => storedate.fightDates)
-    // console.log('the store:', store)
-    // console.log('the dateStore:', storeDate[0].fight_dates)
-
-
-    useEffect(() => {
-        getDates()
-    }, [])
-
-    const getDates = () => {
-        dispatch({
-            type: 'GET_DATES'
-        })
+    const handlePickDateButton = () => {
+        console.log('In HERE')
+        
     }
 
-    const handleDateChange = (event) => {
-        setDate(event);
-    }
 
 
     return (
@@ -45,26 +24,19 @@ function RequestTheMatch(dates) {
             <h1>Request the match</h1>
             <h3>
                 {/* return specific detalis of the boxer */}
-                {store[0].firstname}
-                {store[0].lastname}
-                {store[0].weight_class}
-                {store[0].coach_name}
-                {store[0].fights_count}
+                {specificBoxer[0].firstname}
+                {specificBoxer[0].lastname}
+                {specificBoxer[0].weight_class}
+                {specificBoxer[0].coach_name}
+                {specificBoxer[0].fights_count}
             </h3>
 
             <h2>PICK A DATE</h2>
-            {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer components={['DateCalendar', 'DateCalendar']}>
-                    <DemoItem label="Uncontrolled calendar">
-                        <DateCalendar defaultValue={dayjs('2022-04-17')} />
-                    </DemoItem>
-                    <DemoItem label="Controlled calendar">
-                        <DateCalendar value={dates} onChange={(newValue) => setDate(newValue)} />
-                    </DemoItem>
-                </DemoContainer>
-            </LocalizationProvider> */}
+           
+
+            <button onClick={handlePickDateButton}>PICK A DATE</button>
             {/* <FightDates/> */}
-            <PickYourBoxer/>
+            <PickYourBoxer />
 
 
 

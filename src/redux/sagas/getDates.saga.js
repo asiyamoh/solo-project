@@ -5,7 +5,7 @@ import axios from 'axios'
 function* dates() {
     try {
         const dates = yield axios.get('/api/dates')
-        console.log('dates:', dates.data)
+        console.log('amature fights dates:', dates.data[0])
         yield put({
             type: 'DATES',
             payload: dates.data

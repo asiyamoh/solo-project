@@ -1,35 +1,38 @@
-import { useSelector } from "react-redux"
-import RequestTheMatch from "./RequestTheMatch"
+import { useSelector, useDispatch } from "react-redux"
+import { useEffect } from "react"
 
 function fightDates() {
 
-    const store = useSelector((store) => store.fightDates)
-    console.log('store1:', store)
+    const dispatch = useDispatch();
+    const fightDates = useSelector((store) => store.fightDates)
+    console.log('fightDates:', fightDates)
+
+    useEffect(() => {
+        getDates()
+    }, [])
+
+    const getDates = () => {
+        dispatch({
+            type: 'GET_DATES'
+        })
+    }
+
 
 
     return (
         <>
             <h1>HEY MAPPING</h1>
-
-            <div>
-                {store.length === 0 ? (
-                    <p>Loading...</p>
-                ) : (
-                    <>
-                        {store.map(date => {
-                            return (
-                                <>
-                                    {date.fight_dates}
-                                    <RequestTheMatch dates={date.fightDates}/>
-                                </>
-                            )
-                        })}
-                    </>
-
-                )}
-
-
-            </div>
+            <>
+                {fightDates.map(date => {
+                    return (
+                        <>
+                            <div>
+                                {(date.date)}
+                            </div>
+                        </>
+                    )
+                })}
+            </>
         </>
     )
 }

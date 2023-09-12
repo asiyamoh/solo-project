@@ -14,7 +14,7 @@ function PickYourBoxer() {
     const dispatch = useDispatch();
     const [chosenMember, setChosenMember] = useState('')
     const member = useSelector(store => store.getReducer)
-    console.log('store2:', member)
+    console.log('members:', member)
     console.log('picked boxer', chosenMember)
 
 
@@ -52,7 +52,7 @@ function PickYourBoxer() {
                             return(
                             <MenuItem value={boxer.id}>{boxer.firstname} {boxer.lastname}</MenuItem>
                             )
-                        } )}
+                        })}
                     </Select>
                 </FormControl>
             </Box>
