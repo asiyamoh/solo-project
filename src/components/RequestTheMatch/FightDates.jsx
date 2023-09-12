@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect, useState} from "react"
+import RequestTheMatch from "./RequestTheMatch";
 
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -26,6 +27,14 @@ function fightDates() {
         })
     }
 
+    const handleChangeDate = (event) => {
+        setChosenDate(event.target.value)
+        dispatch({
+            type: 'CHOSEN_DATE',
+            payload:event.target.value
+        })
+    }
+
 
 
     return (
@@ -39,9 +48,7 @@ function fightDates() {
                         id="demo-simple-select"
                         value={chosenDate}
                         label="Date"
-                        onChange={(event) => {
-                            setChosenDate(event.target.value)
-                        }}
+                        onChange={handleChangeDate}
                     >
                         {fightDates.map(date => {
                             return(

@@ -5,7 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 import { useState, useEffect } from 'react'
-import { useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 
@@ -18,8 +18,8 @@ function PickYourBoxer() {
     console.log('picked boxer', chosenMember)
 
 
-      //As Page loads, it will call the function getBoxers 
-      useEffect(() => {
+    //As Page loads, it will call the function getBoxers 
+    useEffect(() => {
         getBoxers()
     }, [])
 
@@ -33,9 +33,17 @@ function PickYourBoxer() {
 
     }
 
+    const handleChange = (event) => {
+        setChosenMember(event.target.value)
+        dispatch({
+            type: 'CHOSEN_MEMBER',
+            payload: event.target.value
+        })
+    }
+
     return (
         <>
-            
+
             <Box sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Your Boxer</InputLabel>
@@ -44,13 +52,11 @@ function PickYourBoxer() {
                         id="demo-simple-select"
                         value={chosenMember}
                         label="Your Boxer"
-                        onChange={(event) => {
-                            setChosenMember(event.target.value)
-                        }}
+                        onChange={handleChange}
                     >
                         {member.map(boxer => {
-                            return(
-                            <MenuItem value={boxer.id}>{boxer.firstname} {boxer.lastname}</MenuItem>
+                            return (
+                                <MenuItem value={boxer.id}>{boxer.firstname} {boxer.lastname}</MenuItem>
                             )
                         })}
                     </Select>
