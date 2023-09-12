@@ -6,18 +6,23 @@ import PickYourBoxer from "./PickYourBoxer";
 
 
 function RequestTheMatch() {
-    
+
     const specificBoxer = useSelector(store => store.getSpecific)
     const fightDates = useSelector(storedate => storedate.fightDates)
-    const chosenMember = useSelector(store => store.RequestMatchInput)
+    const chosenInput = useSelector(store => store.RequestMatchInput)
     console.log('the specificBoxer:', specificBoxer)
     console.log('the dateStore:', fightDates)
-    console.log('Chosen Member Request:', chosenMember)
+    console.log('Chosen Member Request:', chosenInput)
 
-   const handleSubmit = () => {
-    console.log('in HERE')
-    console.log('Can we:')
-   }
+    const handleSubmit = () => {
+        console.log('in HERE')
+        console.log('Can we:')
+        const requestObject = {
+            specificBoxer,
+            chosenInput
+        }
+        console.log('object:', requestObject)
+    }
 
 
 

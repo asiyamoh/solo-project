@@ -52,7 +52,7 @@ function fightDates() {
                     >
                         {fightDates.map(date => {
                             return(
-                            <MenuItem value={date.id}>{date.date} {date.location} </MenuItem>
+                            <MenuItem value={date}>{date.date} {date.location} </MenuItem>
                             )
                         })}
                     </Select>

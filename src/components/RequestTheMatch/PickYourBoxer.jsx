@@ -56,7 +56,7 @@ function PickYourBoxer() {
                     >
                         {member.map(boxer => {
                             return (
-                                <MenuItem value={boxer.id}>{boxer.firstname} {boxer.lastname}</MenuItem>
+                                <MenuItem value={boxer}>{boxer.firstname} {boxer.lastname}</MenuItem>
                             )
                         })}
                     </Select>
