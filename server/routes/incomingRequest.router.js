@@ -2,9 +2,9 @@ const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get('/', (req,res) => {
 
-  const queryText = `
+    const queryText = `
     SELECT
         member.id AS member_id,
         member.firstname AS first_name,
@@ -17,24 +17,25 @@ router.get("/", (req, res) => {
     FROM
         Fights 
     LEFT JOIN
-         Member ON fights.member_id_1 = member.id 
+        Member ON fights.member_id_1 = member.id 
     OR 
 	    fights.member_id_2 = member.id
     LEFT JOIN
         "user" ON fights.who_requested = "user".id
     LEFT JOIN
         dates ON fights.fight_date = dates.id
-    WHERE fights.who_requested = 3;`;
+    WHERE fights.who_requested = 3
+    AND 
+        coach_id = 1;`;
 
-  pool
-    .query(queryText)
-    .then((result) => {
-      res.send(result.rows);
-    })
-    .catch((error) => {
-      res.sendStatus(500);
-      console.log("error with the GET request", error);
-    });
-});
+    pool.query(queryText)
+        .then((result) => {
+            res.send(result.rows)
+        }).catch((error) => {
+            res.sendStatus(500)
+            console.log('ERROR with the GET incoming request:', error)
+        })
+})
+
 
 module.exports = router;

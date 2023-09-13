@@ -19,6 +19,7 @@ const editBoxer = require('./routes/editBoxer.router');
 const fightDates = require('./routes/fightDates.router');
 const matchRequest = require('./routes/matchRequest.router');
 const getRequest = require('./routes/getRequest.router');
+const incomingRequest = require('./routes/incomingRequest.router')
 
 
 
@@ -45,6 +46,7 @@ app.use('/api/editBoxer', editBoxer);
 app.use('/api/dates', fightDates);
 app.use('/api/request', matchRequest);
 app.use('/api/getRequest', getRequest);
+app.use('/api/incomingRequest', incomingRequest)
 
 
 // Serve static files
