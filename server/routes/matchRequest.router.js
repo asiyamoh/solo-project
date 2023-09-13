@@ -4,8 +4,8 @@ const router = express.Router();
 
 
 router.post('/', (req,res) => {
-    const member1 = req.body.member;
-    const member2 = req.body.specificBoxer;
+    const member1 = req.body.yourBoxer;
+    const member2 = req.body.searchBoxer;
     const fightStatus = 'Requested';
     const whoRequested = req.body.whoRequested;
     const fightDate = req.body.fightDate;

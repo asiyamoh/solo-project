@@ -20,7 +20,10 @@ function RequestTheMatch() {
         const requestObject = {
             specificBoxer,
             chosenInput,
-            whoRequested: 1,
+            whoRequested: chosenInput.member.coach_id,
+            fightDate: chosenInput.date.id,
+            yourBoxer: chosenInput.member.id,
+            searchBoxer: chosenInput,
         }
         console.log('object:', requestObject)
     }
