@@ -1,4 +1,4 @@
-const getRequest = (state = {}, action) => {
+const getRequest = (state = [], action) => {
     if(action.type === 'GET_REQUEST_MATCH'){
         return action.payload
     }
