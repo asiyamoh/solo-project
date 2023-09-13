@@ -32,6 +32,7 @@ CREATE TABLE Fights (
     member_id_1 INT REFERENCES "member" NOT NULL,
     member_id_2 INT REFERENCES "member" NOT NULL,
     fight_status VARCHAR(100) NOT NULL,
+    who_requested BOOLEAN NOT NULL,
     accept_notes VARCHAR(150),
     decline_notes VARCHAR(150),
     fight_date INT REFERENCES "dates" NOT NULL

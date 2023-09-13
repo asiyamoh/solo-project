@@ -19,7 +19,8 @@ function RequestTheMatch() {
         console.log('Can we:')
         const requestObject = {
             specificBoxer,
-            chosenInput
+            chosenInput,
+            whoRequested: 1,
         }
         console.log('object:', requestObject)
     }
