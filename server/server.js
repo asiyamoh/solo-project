@@ -18,6 +18,9 @@ const specificBoxer =  require('./routes/specificBoxer.router');
 const editBoxer = require('./routes/editBoxer.router');
 const fightDates = require('./routes/fightDates.router');
 const matchRequest = require('./routes/matchRequest.router');
+const getRequest = require('./routes/getRequest.router');
+
+
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -41,6 +44,8 @@ app.use('/api/specific', specificBoxer);
 app.use('/api/editBoxer', editBoxer);
 app.use('/api/dates', fightDates);
 app.use('/api/request', matchRequest);
+app.use('/api/getRequest', getRequest);
+
 
 // Serve static files
 app.use(express.static('build'));
