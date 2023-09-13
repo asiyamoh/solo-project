@@ -1,12 +1,15 @@
-import { useSelector, useDispatch } from "react-redux"
-import { useEffect, useState } from "react";
+import { useSelector, useDispatch} from "react-redux"
+import { useHistory } from "react-router-dom";
 import FightDates from './FightDates'
 import PickYourBoxer from "./PickYourBoxer";
 
 
 
+
 function RequestTheMatch() {
 
+    const dispatch = useDispatch();
+    const history = useHistory();
     const specificBoxer = useSelector(store => store.getSpecific)
     const fightDates = useSelector(storedate => storedate.fightDates)
     const chosenInput = useSelector(store => store.RequestMatchInput)
@@ -18,14 +21,17 @@ function RequestTheMatch() {
         console.log('in HERE')
         console.log('Can we:')
         const requestObject = {
-            specificBoxer,
-            chosenInput,
             whoRequested: chosenInput.member.coach_id,
             fightDate: chosenInput.date.id,
             yourBoxer: chosenInput.member.id,
-            searchBoxer: chosenInput,
+            searchBoxer: specificBoxer[0].id
         }
         console.log('object:', requestObject)
+        dispatch({
+            type: 'REQUEST',
+            payload: requestObject
+        })
+        history.push('/')
     }
 
 

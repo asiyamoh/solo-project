@@ -9,6 +9,7 @@ import searchGender from './gender.saga';
 import specificSaga from './specificBoxer';
 import editSaga from './editBoxer.saga'
 import datesSaga from './getDates.saga';
+import requestMatch from './requestMatch.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -29,7 +30,7 @@ export default function* rootSaga() {
     specificSaga(),
     editSaga(),
     datesSaga(),
-    
+    requestMatch(),
     
   ]);
 }
