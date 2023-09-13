@@ -1,13 +1,17 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import { useSelector } from 'react-redux';
-import {useHistory} from "react-router-dom"
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom"
+import { useEffect } from 'react'
+import RequestInfo from './RequestInfo';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
+  
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   //function to handle the AddBoxer button
   //this fuction will route the user to the addBoxer page
@@ -29,10 +33,25 @@ function UserPage() {
     history.push('/deleteBoxer')
   }
 
+  const getRequest = () => {
+    console.log('HEYYYYYYYY')
+    dispatch({
+      type: 'GET_REQUEST'
+    })
+  }
+
+
+  useEffect(() => {
+    getRequest()
+  }, [])
+
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
+
+      <RequestInfo />
+
       <div>
         <button onClick={handleAdd}>Add Boxer</button>
         <button onClick={handleSearch}>Search Boxer</button>
