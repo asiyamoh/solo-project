@@ -18,7 +18,7 @@ function* getIncomingRequest() {
 }
 
 function* getIncomingRequestSaga() {
-  yield takeLatest("GET_INCOMING_REQUEST", getIncomingRequest);
+  yield takeLatest('GET_INCOMING_REQUEST', getIncomingRequest);
 }
 
 export default getIncomingRequestSaga;

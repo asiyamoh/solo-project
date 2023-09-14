@@ -8,6 +8,10 @@ function IncomingRequestInfo() {
   const handleAccpet = (acceptedFight) => {
     console.log("Clicked on accept!");
     console.log('Event:', acceptedFight)
+    dispatch({
+        type:'ACCEPT_REQUEST',
+        payload:acceptedFight
+    })
   };
 
   const handleDecline = (declineFight) => {

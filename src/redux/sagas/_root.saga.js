@@ -12,6 +12,7 @@ import datesSaga from './getDates.saga';
 import requestMatch from './requestMatch.saga';
 import getRequest from './getRequestMatch.saga';
 import getIncomingRequest from './getIncomingRequest.saga';
+import acceptRequestSaga from './acceptRequest.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -35,6 +36,7 @@ export default function* rootSaga() {
     requestMatch(),
     getRequest(),
     getIncomingRequest(),
+    acceptRequestSaga(),
     
   ]);
 }
