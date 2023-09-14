@@ -17,6 +17,10 @@ function IncomingRequestInfo() {
   const handleDecline = (declineFight) => {
     console.log("Clicked on decline!");
     console.log('Event:', declineFight);
+    dispatch({
+      type:'DECLINE_REQUEST',
+      payload:declineFight
+    })
   };
 
   return (
