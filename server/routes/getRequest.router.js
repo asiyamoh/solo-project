@@ -5,26 +5,27 @@ const router = express.Router();
 router.get("/", (req, res) => {
 
   const queryText = `
-    SELECT
-        member.id AS member_id,
-        member.firstname AS first_name,
-        member.lastname AS last_name,
-        member.coach_id,
-        fights.who_requested AS requested_id,
-        fights.fight_status AS status,
-        dates.location AS location,
-        dates.fight_dates AS date
-    FROM
-        Fights 
-    LEFT JOIN
-         Member ON fights.member_id_1 = member.id 
-    OR 
-	    fights.member_id_2 = member.id
-    LEFT JOIN
-        "user" ON fights.who_requested = "user".id
-    LEFT JOIN
-        dates ON fights.fight_date = dates.id
-    WHERE fights.who_requested = 3;`;
+  SELECT
+    m1.firstname AS member1_firstname,
+    m1.lastname AS member1_lastname,
+    m2.firstname AS member2_firstname,
+    m2.lastname AS member2_lastname,
+    m1.coach_id AS member1_coach_id,
+    m2.coach_id AS member2_coach_id,
+    fights.who_requested AS who_requested,
+    fights.fight_status AS fight_status,
+    dates.location AS fight_date_location,
+    dates.fight_dates AS fight_date
+  FROM
+    Fights
+  LEFT JOIN
+    Member AS m1 ON fights.member_id_1 = m1.id
+  LEFT JOIN
+    Member AS m2 ON fights.member_id_2 = m2.id
+  LEFT JOIN
+    dates ON fights.fight_date = dates.id
+  WHERE 
+    fights.who_requested = 3;`;
 
   pool
     .query(queryText)
