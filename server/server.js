@@ -22,6 +22,7 @@ const getRequest = require('./routes/getRequest.router');
 const incomingRequest = require('./routes/incomingRequest.router');
 const acceptRequest = require('./routes/acceptRequest.router');
 const declineRequest = require('./routes/declineRequest.router');
+const getUpcomingMatch = require('./routes/upcomingMatch.router');
 
 
 
@@ -50,7 +51,9 @@ app.use('/api/request', matchRequest);
 app.use('/api/getRequest', getRequest);
 app.use('/api/incomingRequest', incomingRequest);
 app.use('/api/acceptRequest', acceptRequest);
-app.use('/api/declineRequest', declineRequest)
+app.use('/api/declineRequest', declineRequest);
+app.use('/api/getUpcomingMatch', getUpcomingMatch)
+
 
 
 // Serve static files
