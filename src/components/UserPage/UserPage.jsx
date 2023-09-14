@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import RequestInfo from "./RequestInfo";
 import IncomingRequestInfo from "./IncomingRequestInfo";
+import UpcomingMatch from "./UpcomingMatch";
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -36,10 +37,13 @@ function UserPage() {
   const getAllRequest = () => {
     console.log("HEYYYYYYYY");
     dispatch({
-      type: 'GET_REQUEST',
+      type: "GET_REQUEST",
     });
     dispatch({
-      type:'GET_INCOMING_REQUEST'
+      type: "GET_INCOMING_REQUEST",
+    });
+    dispatch({
+      type: 'GET_UPCOMING_MATCH',
     })
   };
 
@@ -52,6 +56,7 @@ function UserPage() {
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
 
+      <UpcomingMatch />
       <IncomingRequestInfo />
 
       <RequestInfo />

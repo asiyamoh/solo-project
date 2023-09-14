@@ -14,6 +14,7 @@ import getRequest from './getRequestMatch.saga';
 import getIncomingRequest from './getIncomingRequest.saga';
 import acceptRequestSaga from './acceptRequest.saga';
 import declineRequestSaga from './declineRequest.saga';
+import getUpcomingMatchSaga from './getUpcomingMatch.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -39,6 +40,7 @@ export default function* rootSaga() {
     getIncomingRequest(),
     acceptRequestSaga(),
     declineRequestSaga(),
+    getUpcomingMatchSaga(),
     
   ]);
 }
