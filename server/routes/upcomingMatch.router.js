@@ -33,7 +33,6 @@ router.get('/', (req,res) => {
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows)
-            console.log('Upcoming Request:', result.rows)
         }).catch((error) => {
             res.sendStatus(500);
             console.log('ERROR with the GET upcoming matches:', error)

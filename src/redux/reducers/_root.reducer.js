@@ -6,10 +6,11 @@ import getReducer from './getBoxer.reducer';
 import search from './searchGender.reducer'
 import getSpecific from './getSpecificBoxer';
 import editBoxer from './editBoxer.reducers';
-import fightDates from './fightDates.reducer'
-import RequestMatchInput from './RequestMatchInput.reducers'
+import fightDates from './fightDates.reducer';
+import RequestMatchInput from './RequestMatchInput.reducers';
 import getRequest from './getRequest.reducer';
-import incomingRequests from './incomingRequests.reducers'
+import incomingRequests from './incomingRequests.reducers';
+import getUpcomingMatch from './getUpcomingMatch.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   RequestMatchInput,
   getRequest,
   incomingRequests,
+  getUpcomingMatch,
 
 });
 
