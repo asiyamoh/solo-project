@@ -8,7 +8,7 @@ function RequestInfo() {
 
     return (
         <>
-            <h1>HEYYY</h1>
+            <h1>Requsted waitting </h1>
 
             <div>
                 {requests.length === 0 ? (

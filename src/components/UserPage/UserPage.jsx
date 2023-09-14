@@ -1,14 +1,14 @@
-import React from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom"
-import { useEffect } from 'react'
-import RequestInfo from './RequestInfo';
+import React from "react";
+import LogOutButton from "../LogOutButton/LogOutButton";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import RequestInfo from "./RequestInfo";
+import IncomingRequestInfo from "./IncomingRequestInfo";
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
-  
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -16,39 +16,43 @@ function UserPage() {
   //function to handle the AddBoxer button
   //this fuction will route the user to the addBoxer page
   const handleAdd = () => {
-    console.log('Clicked')
-    //switches routes 
+    console.log("Clicked");
+    //switches routes
     history.push("/addBoxer");
-  }
+  };
 
-  //this function is called 
+  //this function is called
   //when the search button is clicked
   const handleSearch = () => {
-    console.log('CLICKED')
+    console.log("CLICKED");
     //will change route to the search fighter page
     history.push("/searchFighters");
-  }
+  };
 
   const handleYourBoxer = () => {
-    history.push('/deleteBoxer')
-  }
+    history.push("/deleteBoxer");
+  };
 
-  const getRequest = () => {
-    console.log('HEYYYYYYYY')
+  const getAllRequest = () => {
+    console.log("HEYYYYYYYY");
     dispatch({
-      type: 'GET_REQUEST'
+      type: 'GET_REQUEST',
+    });
+    dispatch({
+      type:'GET_INCOMING_REQUEST'
     })
-  }
-
+  };
 
   useEffect(() => {
-    getRequest()
-  }, [])
+    getAllRequest();
+  }, []);
 
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
+
+      <IncomingRequestInfo />
 
       <RequestInfo />
 
@@ -58,9 +62,7 @@ function UserPage() {
         <button onClick={handleYourBoxer}>Your Boxers</button>
       </div>
 
-
       <LogOutButton className="btn" />
-
     </div>
   );
 }
