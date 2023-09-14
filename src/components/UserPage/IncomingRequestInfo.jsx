@@ -1,16 +1,19 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 function IncomingRequestInfo() {
+  const dispatch = useDispatch();
   const incomingRequest = useSelector((store) => store.incomingRequests);
   console.log("almost there:", incomingRequest);
 
-  const handleAccpet = () => {
-    console.log('Clicked on accept!');
-  }
+  const handleAccpet = (acceptedFight) => {
+    console.log("Clicked on accept!");
+    console.log('Event:', acceptedFight)
+  };
 
-  const handleDecline = () => {
-    console.log('Clicked on decline!');
-  }
+  const handleDecline = (declineFight) => {
+    console.log("Clicked on decline!");
+    console.log('Event:', declineFight);
+  };
 
   return (
     <>
@@ -20,15 +23,17 @@ function IncomingRequestInfo() {
         return (
           <>
             <div>
-                {incoming.first_name}
-                <button onClick={handleAccpet}>Accept</button>
-                <button onClick={handleDecline}>Decline</button>
+              <h3>
+                {incoming.member1_firstname} {incoming.member1_lastname}
+                {" VS "}
+                {incoming.member2_firstname} {incoming.member2_lastname}
+              </h3>
+              <button onClick={() => handleAccpet(incoming)} >Accept</button>
+              <button onClick={() => handleDecline(incoming)}>Decline</button>
             </div>
-
           </>
         );
       })}
-
     </>
   );
 }

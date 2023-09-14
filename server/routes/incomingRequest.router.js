@@ -6,27 +6,34 @@ router.get('/', (req,res) => {
 
     const queryText = `
     SELECT
-        member.id AS member_id,
-        member.firstname AS first_name,
-        member.lastname AS last_name,
-        member.coach_id,
-        fights.who_requested AS requested_id,
-        fights.fight_status AS status,
-        dates.location AS location,
-        dates.fight_dates AS date
+        m1.firstname AS member1_firstname,
+        m1.lastname AS member1_lastname,
+        m1.id AS member1_id,
+        m2.firstname AS member2_firstname,
+        m2.lastname AS member2_lastname,
+        m2.id AS member2_id,
+        m1.coach_id AS member1_coach_id,
+        m2.coach_id AS member2_coach_id,
+        fights.who_requested AS who_requested,
+        fights.fight_status AS fight_status,
+        dates.location AS fight_date_location,
+        dates.fight_dates AS fight_date
     FROM
-        Fights 
+        Fights
     LEFT JOIN
-        Member ON fights.member_id_1 = member.id 
-    OR 
-	    fights.member_id_2 = member.id
+        Member AS m1 ON fights.member_id_1 = m1.id
     LEFT JOIN
-        "user" ON fights.who_requested = "user".id
+        Member AS m2 ON fights.member_id_2 = m2.id
     LEFT JOIN
         dates ON fights.fight_date = dates.id
-    WHERE fights.who_requested = 3
+    WHERE 
+        m1.coach_id = 3
+    OR 
+	    m2.coach_id = 3
+    AND
+	    fights.who_requested = 1
     AND 
-        coach_id = 1;`;
+	    fights.fight_status = 'Requested';`;
 
     pool.query(queryText)
         .then((result) => {
