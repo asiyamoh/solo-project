@@ -9,6 +9,7 @@ import editBoxer from './editBoxer.reducers';
 import fightDates from './fightDates.reducer'
 import RequestMatchInput from './RequestMatchInput.reducers'
 import getRequest from './getRequest.reducer';
+import incomingRequests from './incomingRequests.reducers'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   fightDates,
   RequestMatchInput,
   getRequest,
+  incomingRequests,
 
 });
 
