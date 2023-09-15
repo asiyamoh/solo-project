@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import RequestInfo from "./RequestInfo";
 import IncomingRequestInfo from "./IncomingRequestInfo";
 import UpcomingMatch from "./UpcomingMatch";
+import DeclineRequests from "./DeclineRequests";
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -44,7 +45,10 @@ function UserPage() {
     });
     dispatch({
       type: 'GET_UPCOMING_MATCH',
-    })
+    });
+    dispatch({
+      type: 'GET_DECLINE_REQUEST',
+    });
   };
 
   useEffect(() => {
@@ -60,6 +64,8 @@ function UserPage() {
       <IncomingRequestInfo />
 
       <RequestInfo />
+
+      <DeclineRequests/>
 
       <div>
         <button onClick={handleAdd}>Add Boxer</button>
