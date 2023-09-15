@@ -27,7 +27,7 @@ function UpcomingMatch() {
                 <h3>weigh in time: {upcoming.weigh_time}</h3>
                 <h3>Door opens: {upcoming.show_time}</h3>
               </div>
-              <button onClick={handleHappened}>Happened</button>
+              <button onClick={handleHappened}>Happened🗑️</button>
             </div>
           );
         })}

@@ -23,6 +23,7 @@ const incomingRequest = require('./routes/incomingRequest.router');
 const acceptRequest = require('./routes/acceptRequest.router');
 const declineRequest = require('./routes/declineRequest.router');
 const getUpcomingMatch = require('./routes/upcomingMatch.router');
+const getDeclineRequest =  require('./routes/getDeclineRequest.router');
 
 
 
@@ -52,7 +53,8 @@ app.use('/api/getRequest', getRequest);
 app.use('/api/incomingRequest', incomingRequest);
 app.use('/api/acceptRequest', acceptRequest);
 app.use('/api/declineRequest', declineRequest);
-app.use('/api/getUpcomingMatch', getUpcomingMatch)
+app.use('/api/getUpcomingMatch', getUpcomingMatch);
+app.use('/api/declineRequest', getDeclineRequest);
 
 
 

@@ -25,7 +25,9 @@ router.get("/", (req, res) => {
   LEFT JOIN
     dates ON fights.fight_date = dates.id
   WHERE 
-    fights.who_requested = 3;`;
+    fights.who_requested = 3
+  AND 
+    fights.fight_status = 'Requested';`;
 
   pool
     .query(queryText)
