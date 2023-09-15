@@ -7,7 +7,7 @@ function IncomingRequestInfo() {
 
   const handleAccpet = (acceptedFight) => {
     console.log("Clicked on accept!");
-    console.log('Event:', acceptedFight)
+    console.log('Event ACCEPT:', acceptedFight)
     dispatch({
         type:'ACCEPT_REQUEST',
         payload:acceptedFight

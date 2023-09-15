@@ -4,7 +4,7 @@ import axios from "axios";
 function* acceptRequest(action) {
   console.log("action for acceptRequeest:", action.payload);
   try {
-    yield axios.put("/api/acceptRequest", action.payload);
+    yield axios.put(`/api/acceptRequest/${action.payload.fight_id}`, action.payload);
     yield put({
         type: 'GET_INCOMING_REQUEST'
     })
