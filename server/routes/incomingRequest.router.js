@@ -16,6 +16,7 @@ router.get('/', (req,res) => {
         m2.coach_id AS member2_coach_id,
         fights.who_requested AS who_requested,
         fights.fight_status AS fight_status,
+        fights.id As fight_id,
         dates.location AS fight_date_location,
         dates.fight_dates AS fight_date
     FROM
@@ -29,11 +30,11 @@ router.get('/', (req,res) => {
     WHERE 
         m1.coach_id = 3
     OR 
-	    m2.coach_id = 3
+        m2.coach_id = 3
     AND
-	    fights.who_requested = 1
+        fights.who_requested = 1
     AND 
-	    fights.fight_status = 'Requested';`;
+        fights.fight_status = 'Requested';`;
 
     pool.query(queryText)
         .then((result) => {
