@@ -54,7 +54,7 @@ app.use('/api/incomingRequest', incomingRequest);
 app.use('/api/acceptRequest', acceptRequest);
 app.use('/api/declineRequest', declineRequest);
 app.use('/api/getUpcomingMatch', getUpcomingMatch);
-app.use('/api/declineRequest', getDeclineRequest);
+app.use('/api/getDeclineRequest', getDeclineRequest);
 
 
 
