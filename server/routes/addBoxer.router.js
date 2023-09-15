@@ -5,7 +5,8 @@ const router = express.Router();
 
 router.post('/', (req, res) => {
     console.log(req.body.firstname)
-    // console.log('hey:', req.user.id);
+    console.log('hey POST addBoxer:', req.user.id);
+    // I DID get this 😀
 
 
     //queryText to INSERT the new Member
