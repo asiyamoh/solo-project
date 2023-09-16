@@ -29,11 +29,11 @@ router.get('/', (req,res) => {
     LEFT JOIN
         dates ON fights.fight_date = dates.id
     WHERE 
+        fights.who_requested != $1
+    AND 
         m1.coach_id = $1
     OR 
         m2.coach_id = $1
-    AND
-        fights.who_requested != $1
     AND 
         fights.fight_status = 'Requested';`;
     
@@ -42,6 +42,7 @@ router.get('/', (req,res) => {
     pool.query(queryText, queryParams)
         .then((result) => {
             res.send(result.rows)
+            console.log('All requested:', result.rows)
         }).catch((error) => {
             res.sendStatus(500)
             console.log('ERROR with the GET incoming request:', error)
