@@ -1,7 +1,7 @@
 import { useSelector, useDispatch} from "react-redux";
 
 function DeclineRequests() {
-  const dispatch = useDispatch
+  const dispatch = useDispatch();
   const declineStore = useSelector((store) => store.getDeclineRequest);
   console.log("the DeclineStore:", declineStore);
 
@@ -21,15 +21,13 @@ function DeclineRequests() {
           return (
             <>
               <h3>
-                <div>
                     {decline.member1_firstname} {decline.member1_lastname}
                     {" VS "}
                     {decline.member2_firstname} {decline.member2_lastname}
                     <div>
                         {" Fight Status:"} {decline.fight_status}
                     </div>
-                     <button onClick={() => handleDelete(decline)}>DELETE 🗑️</button>
-                </div>
+                <button onClick={() => handleDelete(decline)}>DELETE 🗑️</button>
               </h3>
             </>
           );
