@@ -42,7 +42,7 @@ router.get('/', (req,res) => {
     pool.query(queryText, queryParams)
         .then((result) => {
             res.send(result.rows)
-            console.log('resulr:', result.rows)
+            // console.log('resulr:', result.rows)
         }).catch((error) => {
             res.senStatus(500);
             console.log('ERROR with the get get DECLINE:', error)

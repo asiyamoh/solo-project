@@ -42,7 +42,7 @@ router.get('/', (req,res) => {
     pool.query(queryText, queryParams)
         .then((result) => {
             res.send(result.rows)
-            console.log('All requested:', result.rows)
+            // console.log('All requested:', result.rows)
         }).catch((error) => {
             res.sendStatus(500)
             console.log('ERROR with the GET incoming request:', error)

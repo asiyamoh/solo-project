@@ -1,12 +1,17 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 function UpcomingMatch() {
+  const  dispatch = useDispatch();
   const upcomings = useSelector((store) => store.getUpcomingMatch);
   console.log("the store upcoming:", upcomings);
 
   //🛑 need to do the happened button
-  const handleHappened = () => {
-    console.log('Happened!');
+  const handleHappened = (happenedMatch) => {
+    console.log('Happened!', happenedMatch);
+    dispatch({
+      type:'HAPPENED_MATCH',
+      payload: happenedMatch
+    })
     
   }
 
@@ -27,7 +32,7 @@ function UpcomingMatch() {
                 <h3>weigh in time: {upcoming.weigh_time}</h3>
                 <h3>Door opens: {upcoming.show_time}</h3>
               </div>
-              <button onClick={handleHappened}>Happened🗑️</button>
+              <button onClick={() => handleHappened(upcoming)}>Happened🗑️</button>
             </div>
           );
         })}
