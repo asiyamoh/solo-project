@@ -16,7 +16,8 @@ router.get('/', (req,res) => {
     m1.id AS member1_id,
     m2.firstname AS member2_firstname,
     m2.lastname AS member2_lastname,
-    m2.id AS member2_id
+    m2.id AS member2_id,
+    fights.id AS fight_id
     FROM fights
     LEFT JOIN 
         dates ON fights.fight_date = dates.id
@@ -29,7 +30,7 @@ router.get('/', (req,res) => {
     OR 
         m2.coach_id = $1
     AND 
-        fight_status = 'ACCEPT'`;
+        fight_status = 'ACCEPT';`;
 
     const queryParams = [coachId]
 
