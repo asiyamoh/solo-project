@@ -24,7 +24,8 @@ const acceptRequest = require('./routes/acceptRequest.router');
 const declineRequest = require('./routes/declineRequest.router');
 const getUpcomingMatch = require('./routes/upcomingMatch.router');
 const getDeclineRequest =  require('./routes/getDeclineRequest.router');
-const happenedMatch = require('./routes/happenedMatch.router')
+const happenedMatch = require('./routes/happenedMatch.router');
+const deleteMatch = require('./routes/deleteMatch.router');
 
 
 
@@ -57,6 +58,8 @@ app.use('/api/declineRequest', declineRequest);
 app.use('/api/getUpcomingMatch', getUpcomingMatch);
 app.use('/api/getDeclineRequest', getDeclineRequest);
 app.use('/api/happenedMatch', happenedMatch);
+app.use('/api/deleteMatch', deleteMatch);
+
 
 
 
