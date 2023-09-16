@@ -3,6 +3,9 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 router.get('/', (req,res) => {
+    const coachId = req.user.id;
+    console.log('id:', coachId)
+
 
     const queryText = `
     SELECT
@@ -14,6 +17,7 @@ router.get('/', (req,res) => {
         m2.coach_id AS member2_coach_id,
         fights.who_requested AS who_requested,
         fights.fight_status AS fight_status,
+        fights.id AS fight_id,
         dates.location AS fight_date_location,
         dates.fight_dates AS fight_date
     FROM
@@ -25,17 +29,20 @@ router.get('/', (req,res) => {
     LEFT JOIN
         dates ON fights.fight_date = dates.id
     WHERE 
-	    m1.coach_id = 3
+    	fights.who_requested != $1  
+    AND
+	    m1.coach_id = $1
     OR 
-	    m2.coach_id = 3	
-    AND 
-	    fights.who_requested = 1 
+	    m2.coach_id = $1
     AND 
         fights.fight_status = 'DECLINE';`;
 
-    pool.query(queryText)
+    const queryParams = [coachId]
+
+    pool.query(queryText, queryParams)
         .then((result) => {
             res.send(result.rows)
+            console.log('resulr:', result.rows)
         }).catch((error) => {
             res.senStatus(500);
             console.log('ERROR with the get get DECLINE:', error)

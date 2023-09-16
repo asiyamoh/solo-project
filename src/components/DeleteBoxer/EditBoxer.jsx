@@ -5,7 +5,7 @@ function EditBoxer(){
     const dispatch =  useDispatch();
     const history = useHistory();
     const editBoxer = useSelector((store) => store.editBoxer)
-    console.log('the Store:', editBoxer)
+    console.log('the Store of edit1:', editBoxer)
 
 
     // This function handles all the input change

@@ -3,6 +3,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 router.get('/', (req,res) => {
+    const coachId = req.user.id
 
     const queryText = `
     SELECT 
@@ -24,13 +25,15 @@ router.get('/', (req,res) => {
     LEFT JOIN
         Member AS m2 ON fights.member_id_2 = m2.id
     WHERE 
-	    m1.coach_id = 3
+	    m1.coach_id = $1
     OR 
-	    m2.coach_id = 3
+	    m2.coach_id = $1
     AND 
 	    fight_status = 'ACCEPT';`;
 
-    pool.query(queryText)
+    const queryParams = [coachId]
+
+    pool.query(queryText, queryParams)
         .then((result) => {
             res.send(result.rows)
         }).catch((error) => {

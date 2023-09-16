@@ -9,7 +9,7 @@ router.get('/', (req,res) => {
     const queryText = `SELECT "id", "location",
     TO_CHAR("fight_dates", 'Month DD, YYYY') AS date
     FROM "dates"
-    WHERE "fight_dates" > '09/12/2023'
+    WHERE "fight_dates" > '09/19/2023'
     ORDER BY "fight_dates" ASC;`;
 
     pool.query(queryText)

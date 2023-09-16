@@ -20,7 +20,7 @@ router.get(`/`, (req,res) => {
 
     pool.query(queryText,queryParams)
         .then((result) => {
-            console.log('result:', result.rows)
+            // console.log('result:', result.rows)
             res.send(result.rows)
         }).catch((error) => {
             res.sendStatus(500);

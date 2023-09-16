@@ -9,9 +9,7 @@ router.get('', (req,res)  => {
     const queryText = `SELECT * FROM "member"
     WHERE "coach_id" = $1;`
 
-     //I am hard codeing the coach_id
-    //Need to fix that later 😞
-    const queryParams = [1];
+    const queryParams = [req.user.id];
 
     pool.query(queryText,queryParams)
         .then((result) => {

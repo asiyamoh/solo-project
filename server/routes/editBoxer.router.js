@@ -15,7 +15,14 @@ router.put('/:id', (req,res) => {
     const gender = req.body.gender;
     const weightClass = req.body.weight_class;
     const region = req.body.region;
-    console.log('req body hey:', req.body)
+    console.log('req body hey:', memberNumber)
+    console.log('req body hey:', firstName)
+    console.log('req body hey:', lastName)
+    console.log('req body hey:', birthdate)
+    console.log('req body hey:', gender)
+    console.log('req body hey:', weightClass)
+    console.log('req body hey:', region)
+    console.log('req body hey:', id)
 
 
     // queryText for updating member's info 

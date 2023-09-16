@@ -3,6 +3,8 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 router.get("/", (req, res) => {
+  const coachId = req.user.id;
+  console.log('id coach:', coachId)
 
   const queryText = `
   SELECT
@@ -25,16 +27,18 @@ router.get("/", (req, res) => {
   LEFT JOIN
     dates ON fights.fight_date = dates.id
   WHERE 
-    fights.who_requested = 3
+    fights.who_requested = $1
   AND 
     fights.fight_status = 'Requested';`;
 
+const queryParams = [coachId]
+
   pool
-    .query(queryText)
+    .query(queryText, queryParams)
     .then((result) => {
       res.send(result.rows);
-    })
-    .catch((error) => {
+      // console.log('Result', result.rows)
+    }).catch((error) => {
       res.sendStatus(500);
       console.log("error with the GET request", error);
     });

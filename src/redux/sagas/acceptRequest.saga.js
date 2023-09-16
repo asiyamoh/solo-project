@@ -8,6 +8,9 @@ function* acceptRequest(action) {
     yield put({
         type: 'GET_INCOMING_REQUEST'
     })
+    yield put({
+      type: 'GET_UPCOMING_MATCH'
+    })
   } catch (error) {
     console.log("ERROR with the PUT accept request:", error);
   }

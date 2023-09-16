@@ -6,7 +6,6 @@ const router = express.Router();
 router.post('/', (req, res) => {
     console.log(req.body.firstname)
     console.log('hey POST addBoxer:', req.user.id);
-    // I DID get this 😀
 
 
     //queryText to INSERT the new Member
@@ -19,9 +18,8 @@ router.post('/', (req, res) => {
     //queryParams for the input values of the new Member
     const queryParams = [req.body.member_number, req.body.firstname,
     req.body.lastname, req.body.birthdate, req.body.gender, req.body.weight_class,
-    req.body.region, 1]
-    //I am hard codeing the coach_id
-    //Need to fix that later 😞
+    req.body.region, req.user.id]
+    
 
     pool.query(queryText, queryParams)
         .then((result) => {

@@ -9,6 +9,7 @@ router.post('/', (req,res) => {
     const fightStatus = 'Requested';
     const whoRequested = req.body.whoRequested;
     const fightDate = req.body.fightDate;
+    console.log('Who requested:', whoRequested);
 
     const queryText = `INSERT INTO "fights" (member_id_1, member_id_2, 
         fight_status, who_requested, fight_date)
