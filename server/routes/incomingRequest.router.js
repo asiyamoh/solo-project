@@ -31,9 +31,7 @@ router.get('/', (req,res) => {
     WHERE 
         fights.who_requested != $1
     AND 
-        m1.coach_id = $1
-    OR 
-        m2.coach_id = $1
+       (m1.coach_id = $1 OR m2.coach_id = $1)
     AND 
         fights.fight_status = 'Requested';`;
     
