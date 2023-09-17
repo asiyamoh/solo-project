@@ -23,7 +23,6 @@ import AddBoxer from '../AddBoxer/AddBoxer';
 import DeleteBoxer from '../DeleteBoxer/DeleteBoxer';
 import SearchFighters from '../SearchFighters/SearchFighters'
 import ResultOfTheSearch from '../ResultOfTheSearch/ResultOfTheSearch';
-import MoreDetails from '../MoreDetails/MoreDetails';
 import RequestTheMatch from '../RequestTheMatch/RequestTheMatch';
 import EditBoxer from '../DeleteBoxer/EditBoxer'
 
@@ -135,11 +134,6 @@ function App() {
           {/* Route for the result of the search*/}
           <Route path='/result' exact>
             <ResultOfTheSearch />
-          </Route>
-
-          {/* Route for the more details search*/}
-          <Route path='/moreDetails/:id' exact>
-            <MoreDetails />
           </Route>
 
           {/* Route for Requesting matches*/}
