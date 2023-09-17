@@ -8,7 +8,7 @@ function RequestInfo() {
     <>
       <h1>Requsted waitting </h1>
 
-      <div>
+      <div className="block">
         {requests.length === 0 ? (
           <p>Loading...</p>
         ) : (

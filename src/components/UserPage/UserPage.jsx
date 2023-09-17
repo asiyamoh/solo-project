@@ -1,4 +1,5 @@
 import React from "react";
+import './UserPage.css';
 import LogOutButton from "../LogOutButton/LogOutButton";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -37,8 +38,7 @@ function UserPage() {
 
   return (
     <div className="container">
-      <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
+      <h2>Welcome, {user.first_name}</h2>
 
       <UpcomingMatch />
       <IncomingRequestInfo />

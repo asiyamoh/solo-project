@@ -16,7 +16,7 @@ function DeclineRequests() {
   return (
     <>
       <h1>Decline Requests</h1>
-      <div>
+      <div className="block">
         {declineStore.map((decline) => {
           return (
             <>
