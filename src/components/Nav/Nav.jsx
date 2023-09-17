@@ -28,8 +28,16 @@ function Nav() {
               Home
             </Link>
 
-            <Link className="navLink" to="/info">
-              Info Page
+            <Link className="navLink" to="/addBoxer">
+              Add Boxer
+            </Link>
+
+            <Link className="navLink" to="/searchFighters">
+              Search Boxer
+            </Link>
+
+            <Link className="navLink" to="/deleteBoxer">
+              Your Boxer
             </Link>
 
             <LogOutButton className="navLink" />
