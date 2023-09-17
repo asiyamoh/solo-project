@@ -1,0 +1,19 @@
+body{
+    background-color: white;
+    color: black;
+}
+
+/* .block{
+    background-color: gray;
+} */
+
+.nextBtn{
+    background-color: black;
+    color: aliceblue;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 10px;
+
+}

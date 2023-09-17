@@ -18,7 +18,7 @@ function UpcomingMatch() {
   return (
     <>
       <h1>Upcoming Match</h1>
-      <div>
+      <div  className="block">
         {upcomings.map((upcoming) => {
           return (
             <div>

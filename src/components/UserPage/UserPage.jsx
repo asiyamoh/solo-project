@@ -1,4 +1,5 @@
 import React from "react";
+import './UserPage.css';
 import LogOutButton from "../LogOutButton/LogOutButton";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -14,26 +15,6 @@ function UserPage() {
 
   const history = useHistory();
   const dispatch = useDispatch();
-
-  //function to handle the AddBoxer button
-  //this fuction will route the user to the addBoxer page
-  const handleAdd = () => {
-    console.log("Clicked");
-    //switches routes
-    history.push("/addBoxer");
-  };
-
-  //this function is called
-  //when the search button is clicked
-  const handleSearch = () => {
-    console.log("CLICKED");
-    //will change route to the search fighter page
-    history.push("/searchFighters");
-  };
-
-  const handleYourBoxer = () => {
-    history.push("/deleteBoxer");
-  };
 
   const getAllRequest = () => {
     console.log("HEYYYYYYYY");
@@ -57,8 +38,7 @@ function UserPage() {
 
   return (
     <div className="container">
-      <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
+      <h2>Welcome, {user.first_name}</h2>
 
       <UpcomingMatch />
       <IncomingRequestInfo />
@@ -66,12 +46,6 @@ function UserPage() {
       <RequestInfo />
 
       <DeclineRequests/>
-
-      <div>
-        <button onClick={handleAdd}>Add Boxer</button>
-        <button onClick={handleSearch}>Search Boxer</button>
-        <button onClick={handleYourBoxer}>Your Boxers</button>
-      </div>
 
       <LogOutButton className="btn" />
     </div>
