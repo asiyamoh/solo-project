@@ -22,7 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import AddBoxer from '../AddBoxer/AddBoxer';
 import DeleteBoxer from '../DeleteBoxer/DeleteBoxer';
 import SearchFighters from '../SearchFighters/SearchFighters'
-import ResultOfTheSearch from '../ResultOfTheSearch/ResultOfTheSearch';
+import Result from '../ResultOfTheSearch/Result';
 import RequestTheMatch from '../RequestTheMatch/RequestTheMatch';
 import EditBoxer from '../DeleteBoxer/EditBoxer'
 
@@ -133,7 +133,7 @@ function App() {
 
           {/* Route for the result of the search*/}
           <Route path='/result' exact>
-            <ResultOfTheSearch />
+            <Result />
           </Route>
 
           {/* Route for Requesting matches*/}

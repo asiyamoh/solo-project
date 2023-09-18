@@ -4,17 +4,21 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { useState } from 'react'
+import { useDispatch } from 'react-redux';
 
 
 function InputNumberOfFights() {
 
-    
+    const dispatch = useDispatch();
 
     const handleChange = (event) => {
         const numOfFights = event.target.value
         console.log('hey')
         console.log('numofFights:', numOfFights)
+        dispatch({
+            type: 'INPUT_SEARCH',
+            payload:{property: "numOfFights", value:event.target.value}
+        })
     }
 
     return (

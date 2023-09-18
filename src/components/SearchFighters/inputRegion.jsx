@@ -1,15 +1,28 @@
-import * as React from 'react';
+import { useState } from 'react'
+import { useDispatch } from 'react-redux';
+
 import Box from '@mui/material/Box';
 import Select, { selectClasses } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
-import { useState } from 'react'
+
 
 
 function inputRegion(){
 
+    const dispatch = useDispatch();
+
      //to hold the input value of region
      const [region, setRegion] = useState('');
+
+     const handleChange = (event)  => {
+        setRegion(event.target.value)
+        console.log('Region:', event.target.value);
+        dispatch({
+            type:'INPUT_SEARCH',
+            payload:{property:'region', value: event.target.value}
+        })
+     }
 
     return (
         <Box>
@@ -26,10 +39,7 @@ function inputRegion(){
                         },
                     },
                 }}
-                onChange={(event) => {
-                    setRegion(event.target.value)
-
-                }}
+                onChange={handleChange}
                 value={region}
 
             >

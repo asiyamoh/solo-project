@@ -1,15 +1,37 @@
-import * as React from 'react';
+import { useState } from 'react'
+import { useDispatch } from 'react-redux';
+
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { useState } from 'react'
+
 
 function inputWeightRange() {
+
+    const dispatch = useDispatch();
 
     // to hold the input value of weight Class1
     const [weightClass1, setWeightClass1] = useState('');
 
     // to hold the input value of weight Class2
     const [weightClass2, setWeightClass2] = useState('');
+
+    const handleChangeWeight1 = (event) => {
+        setWeightClass1(event.target.value)
+        console.log('weight2:', event.target.value)
+        dispatch({
+            type:'INPUT_SEARCH',
+            payload:{property: "weight1", value: event.target.value}
+        })
+    }
+
+    const handleChangeWeight2 = (event) => {
+        setWeightClass2(event.target.value)
+        console.log('weight2:', event.target.value)
+        dispatch({
+            type:'INPUT_SEARCH',
+            payload:{property:"weight2", value: event.target.value}
+        })
+    }
 
     return (
         <Box
@@ -26,17 +48,13 @@ function inputWeightRange() {
                 <h3>Enter a range of weight</h3>
                 <TextField id="outlined-basic" label="WEIGHT CLASS1" variant="outlined"
                     type="number"
-                    onChange={(event) => {
-                        setWeightClass1(event.target.value)
-                    }}
+                    onChange={handleChangeWeight1}
                     value={weightClass1}
                 />
 
                 <TextField id="outlined-basic" label="WEIGHT CLASS2" variant="outlined"
                     type="number"
-                    onChange={(event) => {
-                        setWeightClass2(event.target.value)
-                    }}
+                    onChange={handleChangeWeight2}
                     value={weightClass2}
                 />
             </div >

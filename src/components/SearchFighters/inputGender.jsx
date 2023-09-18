@@ -19,6 +19,10 @@ function inputGender() {
             type:'GENDER',
             payload:gender
         })
+        dispatch({
+            type: 'INPUT_SEARCH',
+            payload:{property: "gender", value:event.target.value}
+        })
     }
 
    

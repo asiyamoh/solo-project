@@ -1,25 +1,54 @@
-import { useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
-function ResultOfTheSearch() {
+function Result() {
+  const dispatch = useDispatch();
+  const history =  useHistory();
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [loading, setLoading] = useState(false);
+  const [filteredMembers, setFilteredMembers] = useState([]);
   const [specificMember, setSpecificMember] = useState('');
 
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const resultStore = useSelector((store) => store.search);
-  console.log("the store bro:", resultStore);
+  const allMembersStore = useSelector((store) => store.allMembers);
+  console.log("All:", allMembersStore);
+
+  const searchInputStore = useSelector((store) => store.inputSearch);
+  console.log("Search INPUTTTT:", searchInputStore);
 
   const specificStore = useSelector((store) => store.getSpecific);
   console.log("the store hey:", specificStore);
+
+  const search = () => {
+    console.log("we heree");
+    if (loading) {
+      console.log("loading", loading);
+    } else {
+      const filtered = allMembersStore.filter((member) => {
+        if (
+          searchInputStore.weight1 < member.weight_class &&
+          member.weight_class < searchInputStore.weight2 &&
+          member.region === searchInputStore.region &&
+          member.fight_count === searchInputStore.numOfFights &&
+          member.gender == searchInputStore.gender &&
+          member.age >= searchInputStore.age
+        ) {
+          return true;
+        }
+      });
+      setFilteredMembers(filtered);
+      console.log("filtered", filteredMembers);
+    }
+  };
 
   const handleClick = (id) => {
     console.log("I have been clicked!");
@@ -37,6 +66,19 @@ function ResultOfTheSearch() {
     history.push("/request");
   }
 
+  useEffect(() => {
+    dispatch({
+      type: "GET_ALL_MEMBERS",
+    });
+    search();
+  }, []);
+
+  useEffect(() => {
+    if (allMembersStore.length > 0) {
+      setLoading(false);
+    }
+  }, [allMembersStore]);
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -51,14 +93,14 @@ function ResultOfTheSearch() {
 
   return (
     <>
-      <h1>Result of the search</h1>
-      <div>
-        {resultStore.length === 0 ? (
+      <h1>RESULT</h1>
+         <div>
+        {filteredMembers.length === 0 ? (
           <p>Loading...</p>
         ) : (
           <>
             <div>
-              {resultStore.map((search) => {
+              {filteredMembers.map((search) => {
                 return (
                   <Button
                     onClick={() => handleClick(search.id)}
@@ -104,4 +146,4 @@ function ResultOfTheSearch() {
   );
 }
 
-export default ResultOfTheSearch;
+export default Result;
