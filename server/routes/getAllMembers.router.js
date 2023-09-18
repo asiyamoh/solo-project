@@ -6,8 +6,14 @@ router.get('/', (req,res) => {
     const coachId = req.user.id
     console.log('They coachID:', coachId)
 
-    const queryText = `SELECT * FROM "member"
-    WHERE coach_id != $1;`
+    const queryText = `SELECT 
+    Member.*, 
+    COUNT(fights.id) AS fight_count,
+    EXTRACT(YEAR FROM AGE(Member.birthdate)) AS age
+    FROM Member
+    LEFT JOIN fights ON Member.id = fights.member_id_1 OR Member.id = fights.member_id_2
+    WHERE Member.coach_id != $1
+    GROUP BY Member.id;`
 
     const queryParams = [coachId];
 

@@ -1,14 +1,27 @@
-import * as React from 'react';
+import { useState } from 'react'
+import { useDispatch } from 'react-redux';
+
 import Box from '@mui/material/Box';
 import Select, { selectClasses } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
-import { useState } from 'react'
+
 
 function inputAge() {
 
+    const dispatch = useDispatch();
+
     //to hold the input value of age
     const [age, setAge] = useState('')
+    
+    const handleChange = (event) => {
+        setAge(event.target.value)
+        console.log('Age bro:', event.target.value)
+        dispatch({
+            type:'INPUT_SEARCH',
+            payload:{property:"age", value:event.target.value}
+        }) 
+    }
 
     return (
 
@@ -27,22 +40,20 @@ function inputAge() {
                         },
                     },
                 }}
-                onChange={(event) => {
-                    setAge(event.target.value)
-                }}
+                onChange={handleChange}
                 value={age}
             >
-                <MenuItem value="01/01/2001">8 Years old</MenuItem>
-                <MenuItem value="01/01/2002">9 years old</MenuItem>
-                <MenuItem value="01/01/2003">10 years old</MenuItem>
-                <MenuItem value="01/01/2004">11 years old</MenuItem>
-                <MenuItem value="01/01/2005">12 years old</MenuItem>
-                <MenuItem value="01/01/2006">13 years old</MenuItem>
-                <MenuItem value="01/01/2007">14 years old</MenuItem>
-                <MenuItem value="01/01/2008">15 years old</MenuItem>
-                <MenuItem value="01/01/2007">16 years old</MenuItem>
-                <MenuItem value="01/01/2006">17 years old</MenuItem>
-                <MenuItem value="01/01/2005">Above 18</MenuItem>
+                <MenuItem value='8'>8 Years old</MenuItem>
+                <MenuItem value="9">9 years old</MenuItem>
+                <MenuItem value="10">10 years old</MenuItem>
+                <MenuItem value="11">11 years old</MenuItem>
+                <MenuItem value="12">12 years old</MenuItem>
+                <MenuItem value="13">13 years old</MenuItem>
+                <MenuItem value="14">14 years old</MenuItem>
+                <MenuItem value="15">15 years old</MenuItem>
+                <MenuItem value="16">16 years old</MenuItem>
+                <MenuItem value="17">17 years old</MenuItem>
+                <MenuItem value="18">Above 18</MenuItem>
             </Select>
 
 
