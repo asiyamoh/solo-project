@@ -1,6 +1,7 @@
 import { useSelector, useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import Result from './Result'
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -97,6 +98,7 @@ function ResultOfTheSearch() {
                 </Typography>
               </Box>
             </Modal>
+            <Result/>
           </>
         )}
       </div>
