@@ -47,6 +47,9 @@ function Result() {
       });
       setFilteredMembers(filtered);
       console.log("filtered", filteredMembers);
+      dispatch({
+        type: "GET_ALL_MEMBERS",
+      });
     }
   };
 
