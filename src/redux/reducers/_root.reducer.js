@@ -12,6 +12,7 @@ import getRequest from './getRequest.reducer';
 import incomingRequests from './incomingRequests.reducers';
 import getUpcomingMatch from './getUpcomingMatch.reducer';
 import getDeclineRequest from './getDeclineRequest.reducer';
+import allMembers from './allMembers.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   incomingRequests,
   getUpcomingMatch,
   getDeclineRequest,
+  allMembers,
 
 });
 
