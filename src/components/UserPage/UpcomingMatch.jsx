@@ -44,16 +44,15 @@ function UpcomingMatch() {
                 key={row.fight_id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell align="right">
+                <TableCell align="left">
                   {row.member1_firstname} {row.member1_lastname}
                 </TableCell>
-                <TableCell align="right">
-                  {row.member2_firstname}
-                  {row.member2_lastname}
+                <TableCell align="left">
+                  {row.member2_firstname} {row.member2_lastname}
                 </TableCell>
-                <TableCell align="right">{row.location}</TableCell>
-                <TableCell align="right">{row.weigh_time}</TableCell>
-                <TableCell align="right">{row.show_time}</TableCell>
+                <TableCell align="left">{row.location}</TableCell>
+                <TableCell align="left">{row.weigh_time}</TableCell>
+                <TableCell align="left">{row.show_time}</TableCell>
                 <TableCell>
                   <button onClick={() => handleHappened(row)}>
                     Happened🗑️

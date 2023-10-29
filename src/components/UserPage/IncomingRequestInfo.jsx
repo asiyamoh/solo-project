@@ -41,7 +41,7 @@ function IncomingRequestInfo() {
             <TableHead>
               <TableRow>
                 <TableCell>Fighters Name</TableCell>
-                <TableCell align="right">Opponents Name</TableCell>
+                <TableCell align="center">Opponents Name</TableCell>
                 <TableCell align="center">Match Date</TableCell>
                 <TableCell align="center">Location</TableCell>
                 <TableCell align="center">Opponents Number of fights</TableCell>

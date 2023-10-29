@@ -38,7 +38,7 @@ function UserPage() {
 
   return (
     <div className="container">
-      <h2>Welcome, {user.first_name}</h2>
+      <h2>Welcome, Coach {user.first_name}</h2>
 
       <UpcomingMatch />
       <IncomingRequestInfo />
@@ -47,7 +47,7 @@ function UserPage() {
 
       <DeclineRequests/>
 
-      <LogOutButton className="btn" />
+      <LogOutButton className="logoutBtn" />
     </div>
   );
 }
