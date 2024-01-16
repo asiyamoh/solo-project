@@ -1,5 +1,5 @@
 import React from "react";
-import './UserPage.css';
+import "./UserPage.css";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -25,10 +25,10 @@ function UserPage() {
       type: "GET_INCOMING_REQUEST",
     });
     dispatch({
-      type: 'GET_UPCOMING_MATCH',
+      type: "GET_UPCOMING_MATCH",
     });
     dispatch({
-      type: 'GET_DECLINE_REQUEST',
+      type: "GET_DECLINE_REQUEST",
     });
   };
 
@@ -45,9 +45,10 @@ function UserPage() {
 
       <RequestInfo />
 
-      <DeclineRequests/>
+      <DeclineRequests />
 
       <LogOutButton className="logoutBtn" />
+
     </div>
   );
 }
