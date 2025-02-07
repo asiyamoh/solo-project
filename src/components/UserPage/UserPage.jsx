@@ -1,5 +1,5 @@
 import React from "react";
-import "./UserPage.css";
+import './UserPage.css';
 import LogOutButton from "../LogOutButton/LogOutButton";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -25,10 +25,10 @@ function UserPage() {
       type: "GET_INCOMING_REQUEST",
     });
     dispatch({
-      type: "GET_UPCOMING_MATCH",
+      type: 'GET_UPCOMING_MATCH',
     });
     dispatch({
-      type: "GET_DECLINE_REQUEST",
+      type: 'GET_DECLINE_REQUEST',
     });
   };
 
@@ -38,17 +38,16 @@ function UserPage() {
 
   return (
     <div className="container">
-      <h2>Welcome, Coach {user.first_name}</h2>
+      <h2>Welcome, {user.first_name}</h2>
 
       <UpcomingMatch />
       <IncomingRequestInfo />
 
       <RequestInfo />
 
-      <DeclineRequests />
+      <DeclineRequests/>
 
-      <LogOutButton className="logoutBtn" />
-
+      <LogOutButton className="btn" />
     </div>
   );
 }

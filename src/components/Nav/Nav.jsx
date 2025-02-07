@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
-import Menu from './Menu';
 
 function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
     <div className="nav">
+      <Link to="/home">
+        <h2 className="nav-title">Prime Solo Project</h2>
+      </Link>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
@@ -22,9 +24,29 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Menu/>
+            <Link className="navLink" to="/user">
+              Home
+            </Link>
+
+            <Link className="navLink" to="/addBoxer">
+              Add Boxer
+            </Link>
+
+            <Link className="navLink" to="/searchFighters">
+              Search Boxer
+            </Link>
+
+            <Link className="navLink" to="/deleteBoxer">
+              Your Boxer
+            </Link>
+
+            <LogOutButton className="navLink" />
           </>
         )}
+
+        <Link className="navLink" to="/about">
+          About
+        </Link>
       </div>
     </div>
   );
