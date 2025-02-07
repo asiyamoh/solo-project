@@ -1,18 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
 
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
+import * as React from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 function IncomingRequestInfo() {
   const dispatch = useDispatch();
-
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const [moreDetails, setMoreDetails] = useState("");
 
   const incomingRequest = useSelector((store) => store.incomingRequests);
   console.log("almost there:", incomingRequest);
@@ -24,7 +22,6 @@ function IncomingRequestInfo() {
       type: "ACCEPT_REQUEST",
       payload: acceptedFight,
     });
-    handleClose();
   };
 
   const handleDecline = (declineFight) => {
@@ -36,89 +33,52 @@ function IncomingRequestInfo() {
     });
   };
 
-  const handleClick = (incoming) => {
-    console.log("Clicked", incoming);
-    setMoreDetails(incoming);
-    console.log("details:", moreDetails);
-    handleOpen();
-  };
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    bgcolor: "white",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
-
   return (
-    <>
-      <h1>Incoming Requests</h1>
-      <div className="block">
-        {incomingRequest.map((incoming) => {
-          return (
-            <>
-              <div>
-                <Button onClick={() => handleClick(incoming)}>
-                  <h3>
-                    {incoming.member1_firstname} {incoming.member1_lastname}
-                    {" VS "}
-                    {incoming.member2_firstname} {incoming.member2_lastname}
-                  </h3>
-                </Button>
-                <div>
-                  <button onClick={() => handleAccpet(incoming)}>Accept</button>
-                  <button onClick={() => handleDecline(incoming)}>
-                    Decline
-                  </button>
-                </div>
-              </div>
-
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-              >
-                <Box sx={style}>
-                  <Typography
-                    id="modal-modal-title"
-                    variant="h6"
-                    component="h2"
-                  >
-                    <div>
-                      {moreDetails ? (
-                        <h3>
-                          {/* return specific detalis of the boxer */}
-                          {moreDetails.member2_firstname}{" "}
-                          {moreDetails.member2_lastname}
-                          <div>
-                            Weight class: {moreDetails.member2_weightclass}
-                          </div>
-                          Fight count: {moreDetails.member2_fightcount}
-                          <div>Location: {moreDetails.fight_date_location}</div>
-                          <div>Date: {moreDetails.fight_date}</div>
-                        </h3>
-                      ) : (
-                        <p>Loading...</p>
-                      )}
-                      <button onClick={() => handleAccpet(incoming)}>
-                        Accept
+      <>
+        <h1>Incoming Requests</h1>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Fighters Name</TableCell>
+                <TableCell align="center">Opponents Name</TableCell>
+                <TableCell align="center">Match Date</TableCell>
+                <TableCell align="center">Location</TableCell>
+                <TableCell align="center">Opponents Number of fights</TableCell>
+                <TableCell align="center">Opponents Weight Class</TableCell>
+                <TableCell align="center">Accept OR Decline</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {incomingRequest.map((row) => (
+                <TableRow
+                  key={row.fight_id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell align="center">
+                    {row.member1_firstname} {row.member1_lastname}
+                  </TableCell>
+                  <TableCell align="center">
+                    {row.member2_firstname} {row.member2_lastname}
+                  </TableCell>
+                  <TableCell align="center">{row.fight_date}</TableCell>
+                  <TableCell align="center">{row.fight_date_location}</TableCell>
+                  <TableCell align="center">{row.member2_fightcount}</TableCell>
+                  <TableCell align="center">{row.member2_weightclass}</TableCell>
+                  <TableCell align="center">
+                    <>
+                      <button onClick={() => handleAccpet(row)}>Accept</button>
+                      <button onClick={() => handleDecline(row)}>
+                        Decline
                       </button>
-                    </div>
-                  </Typography>
-                </Box>
-              </Modal>
-            </>
-          );
-        })}
-      </div>
-    </>
+                    </>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </>
   );
 }
 

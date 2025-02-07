@@ -4,7 +4,17 @@ import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
+
+import AddBoxer from "../AddBoxer/AddBoxer";
+
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 function DeleteBoxer() {
 
@@ -62,36 +72,49 @@ function DeleteBoxer() {
 
     return (
         <>
-            <h1>DELETE BOXER</h1>
-            <div>
-                {/* map over the store and put it on DOM */}
-                {store.map(boxer => {
-                    return (
-                        <>
-                            <Stack direction="column-reverse" spacing={1} onClick={() => handleClickTrash(boxer.id)}>
-                                <h3 key={boxer.id}>
-                                    {boxer.firstname},
-                                    {boxer.lastname},
-                                    {boxer.weight_class}
+        <AddBoxer/>
+            <h1>Your Boxers</h1>
 
-                                    {/* The  trash Icon */}
-                                    <IconButton aria-label="delete" color="secondary"
-                                        onClick={() => handleClickTrash(boxer.id)}
-                                    >
-                                        <DeleteIcon />
-                                    </IconButton>
-
-                                    {/* The edit button*/}
-                                    <button onClick={() => handleEditClick(boxer)}>Edit</button>
-                                </h3>
-                            </Stack>
-                        </>
-                    )
-                })}
-            </div>
-
-            <button onClick={handleClickHome}>HOME</button>
-            {/* will need the back button here  🥲*/}
+            {/* <button onClick={handleClickHome}>HOME</button>
+            will need the back button here  🥲 */}
+            <>
+            <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell  align="left">Member Number</TableCell>
+              <TableCell align="left">Fighters Name</TableCell>
+              <TableCell align="left">Birthdate</TableCell>
+              <TableCell align="left">Gender</TableCell>
+              <TableCell align="left">Weight Class</TableCell>
+              <TableCell align="left">Edit</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {store.map((row) => (
+              <TableRow
+                key={row.fight_id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell align="left">
+                  {row.member_number}
+                </TableCell>
+                <TableCell align="left">
+                    {row.firstname} {row.lastname}
+                </TableCell>
+                <TableCell align="left">{row.birthdate}</TableCell>
+                <TableCell align="left">{row.gender}</TableCell>
+                <TableCell align="left">{row.weight_class}</TableCell>
+                <TableCell>
+                <button onClick={() => handleEditClick(row)}>Edit</button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+            
+            </>
         </>
     )
 }

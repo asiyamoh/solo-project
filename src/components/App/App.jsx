@@ -27,11 +27,21 @@ import RequestTheMatch from '../RequestTheMatch/RequestTheMatch';
 import EditBoxer from '../DeleteBoxer/EditBoxer'
 
 import './App.css';
+// import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
 function App() {
   const dispatch = useDispatch();
 
   const user = useSelector(store => store.user);
+
+  // const darkTheme = createTheme({
+  //   palette: {
+  //     mode: 'dark',
+  //   },
+  // });
+
+  
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
@@ -39,6 +49,9 @@ function App() {
 
   return (
     <Router>
+        {/* <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+    </ThemeProvider> */}
       <div>
         <Nav />
         <Switch>
